@@ -1,8 +1,15 @@
+/*
+ * 三种快速幂计算 a ^ b % c，假设数据范围如下：
+ *      a < 10 ^ 9
+ * 0 <= b < 10 ^ 9
+ *  1 < c < 10 ^ 9
+*/
+
 #include <iostream>
+#include <ctime>
 
 typedef long long LL;
 
-// calculate a ^ b % c
 LL fastPowerRecursion(LL a, LL b, LL c)
 {
     if (a == 0 || c == 1) return 0;  // special judge
@@ -17,8 +24,6 @@ LL fastPowerRecursion(LL a, LL b, LL c)
     }
 }
 
-// calculate a ^ b % c
-// example: 99^6 == 99^2 * 99^4
 LL fastPowerIteration(LL a, LL b, LL c)
 {
     if (a == 0 || c == 1) return 0;  // special judge
@@ -33,8 +38,61 @@ LL fastPowerIteration(LL a, LL b, LL c)
     return ans;
 }
 
+LL fastPowerIterationBits(LL a, LL b, LL c)
+{
+    if (a == 0 || c == 1) return 0;  // special judge
+    a %= c;
+    int len = sizeof(LL) * 8, bit;
+    LL ans = 1;
+    for (int i = len - 1; i >= 0; i--)  // traversal from high bit to low bit in b
+    {
+        bit = (b >> i) & 1;
+        ans = (ans * ans) * (bit ? a : 1) %c;
+    }
+    return ans;
+}
+
+void test()
+{
+    LL data_set[300][3] = {
+        {55, 100, 450},
+        {34, 12, 43},
+        {0, 1, 1},
+        {1, 0, 1},
+        {0, 0, 23},
+        {100, 100, 10},
+        {5, 7, 99999},
+        {-1, 45, 4},
+        {99993425, 5345, 456754},
+        {987654321, 783589549, 4354359834}  // 正确答案可能是：34099175
+    };
+    int len = 10;
+
+    for (int i = 0; i < len; i++)
+    {
+        long begin, end;
+        LL fpr, fpi, fpib;
+        printf("Test %d:\n(a, b, c) = (%d, %d, %d)\n", i + 1, data_set[i][0], data_set[i][1], data_set[i][2]);
+        begin = clock();
+        fpr = fastPowerRecursion(data_set[i][0], data_set[i][1], data_set[i][2]);
+        end = clock();
+        printf("fpr  %lld\t%ldms\n", fpr, (end - begin));
+
+        begin = clock();
+        fpi = fastPowerIteration(data_set[i][0], data_set[i][1], data_set[i][2]);
+        end = clock();
+        printf("fpi  %lld\t%ldms\n", fpi, (end - begin));
+
+        begin = clock();
+        fpib = fastPowerIterationBits(data_set[i][0], data_set[i][1], data_set[i][2]);
+        end = clock();
+        printf("fpib %lld\t%ldms\n", fpib, (end - begin));
+        printf("\n");
+    }
+}
+
 int main()
 {
-    printf("%lld, %lld", fastPowerRecursion(55, 100, 450), fastPowerIteration(55, 100, 450));
+    test();
     return 0;
 }

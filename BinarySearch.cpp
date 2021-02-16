@@ -1,3 +1,15 @@
+/*
+1. `二分查找的本质：查询有序序列第一个满足（或最后一个不满足）给定条件元素的位置`
+
+2. `要注意的关键点：`
+
+   * `while 循环中是 left <= right or left < right`
+   * `接收参数 left，right 所代表的区间开闭`
+   * `判断时的 array[mid] > or < or >= or <= x`
+   * `不满足情况时的返回值`
+   * `返回值返回什么`
+*/
+
 #include <iostream>
 #include <algorithm>
 
