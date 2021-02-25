@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cstdlib>  // 用于随机生成待排序的测试数据
+#include <cmath>  // 为使用 round
 #define MAXN 10005  // 待排序数组的元素大小范围
 using namespace std;
 
@@ -81,6 +82,57 @@ void merge_sort_iteration(int a[], int n)
     }
 }
 
+// 快速排序：按主元分割数组，分而治之
+
+// 分割是辅助函数，返回最终主元下标，left 和 right 左闭右闭
+int partition(int a[], int left, int right)
+{
+    // 删去前两行，将固定 a[left] 为主元
+    int p = round(1.0 * rand() / RAND_MAX * (right - left) + left);
+    swap(a[p], a[left]);
+
+    int temp = a[left];
+    while (left < right)
+    {
+        while (left < right && a[right] > temp) right--;
+        a[left] = a[right];
+        while (left < right && a[left] <= temp) left++;
+        a[right] = a[left];
+    }
+    a[left] = temp;
+    return left;
+}
+
+// 分割函数的另一种写法
+// decreasingly partition the array in [left, right]
+int randPartition(int array[], int left, int right)
+{
+    int p = rand() % (right - left) + left;
+    swap(array[p], array[left]);
+
+    int prime = left++;  // 主元为初始的 left 值，left 值 然后向后位移一位
+    while (left < right)  // until left == right
+    {
+        while (left < right && array[left] >= array[prime]) left++;
+        while (left < right && array[right] < array[prime]) right--;
+        swap(array[left], array[right]);
+    }
+    swap(array[prime], array[left - 1]);  // 交换主元到中间
+    return left;
+}
+
+// 快速排序主函数，left 和 right 左闭右闭
+void quick_sort(int a[], int left, int right)
+{
+    if (left < right)
+    {
+        // pos 为分割点
+        int pos = partition(a, left, right);
+        quick_sort(a, left, pos - 1);
+        quick_sort(a, pos + 1, right);
+    }
+}
+
 // 测试 ↓
 
 // 根据 seed 生成随机的 n 个随机数
@@ -108,12 +160,14 @@ void sort_test()
         printf("test data: "); output_array(data, n);
         select_sort(data, data + n);
         printf("ss   "); output_array(data, n);
-        gen_data(data, seed, n);insertion_sort(data, data + n);
+        gen_data(data, seed, n); insertion_sort(data, data + n);
         printf("is   "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_recursion(data, 0, n - 1);
+        gen_data(data, seed, n); merge_sort_recursion(data, 0, n - 1);
         printf("msr  "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_iteration(data, n);
+        gen_data(data, seed, n); merge_sort_iteration(data, n);
         printf("msi  "); output_array(data, n);
+        gen_data(data, seed, n); quick_sort(data, 0, n - 1);
+        printf("qs   "); output_array(data, n);
         printf("\n");
     }
     // test 2
@@ -123,12 +177,14 @@ void sort_test()
         printf("test data: "); output_array(data, n);
         select_sort(data, data + n);
         printf("ss   "); output_array(data, n);
-        gen_data(data, seed, n);insertion_sort(data, data + n);
+        gen_data(data, seed, n); insertion_sort(data, data + n);
         printf("is   "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_recursion(data, 0, n - 1);
+        gen_data(data, seed, n); merge_sort_recursion(data, 0, n - 1);
         printf("msr  "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_iteration(data, n);
+        gen_data(data, seed, n); merge_sort_iteration(data, n);
         printf("msi  "); output_array(data, n);
+        gen_data(data, seed, n); quick_sort(data, 0, n - 1);
+        printf("qs   "); output_array(data, n);
         printf("\n");
     }
     // test 3
@@ -138,12 +194,14 @@ void sort_test()
         printf("test data: "); output_array(data, n);
         select_sort(data, data + n);
         printf("ss   "); output_array(data, n);
-        gen_data(data, seed, n);insertion_sort(data, data + n);
+        gen_data(data, seed, n); insertion_sort(data, data + n);
         printf("is   "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_recursion(data, 0, n - 1);
+        gen_data(data, seed, n); merge_sort_recursion(data, 0, n - 1);
         printf("msr  "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_iteration(data, n);
+        gen_data(data, seed, n); merge_sort_iteration(data, n);
         printf("msi  "); output_array(data, n);
+        gen_data(data, seed, n); quick_sort(data, 0, n - 1);
+        printf("qs   "); output_array(data, n);
         printf("\n");
     }
     // test 4
@@ -153,12 +211,14 @@ void sort_test()
         printf("test data: "); output_array(data, n);
         select_sort(data, data + n);
         printf("ss   "); output_array(data, n);
-        gen_data(data, seed, n);insertion_sort(data, data + n);
+        gen_data(data, seed, n); insertion_sort(data, data + n);
         printf("is   "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_recursion(data, 0, n - 1);
+        gen_data(data, seed, n); merge_sort_recursion(data, 0, n - 1);
         printf("msr  "); output_array(data, n);
-        gen_data(data, seed, n);merge_sort_iteration(data, n);
+        gen_data(data, seed, n); merge_sort_iteration(data, n);
         printf("msi  "); output_array(data, n);
+        gen_data(data, seed, n); quick_sort(data, 0, n - 1);
+        printf("qs   "); output_array(data, n);
         printf("\n");
     }
 }
