@@ -41,7 +41,11 @@
 
 ## 有限状态机 Finite State Machine
 
-待补充
-https://kdocs.cn/l/cobi7ul6fhWd
-[金山文档] B1003 有限状态机.pom
-![B1003.png](./B1003.png)
+针对字符串处理的相关题目，可以使用 FSM 解决。首先分清楚两个概念
+
+* 有限的状态节点
+* 表示状态转移条件的有向边
+
+在做题时，首先定义好要解决问题的字符串模式，接下来定义有穷的状态码及其内涵，最后找到所有的可状态转移条件。
+
+PAT 中 B1003，“我要通过”这一题是个很好的例子，[点此处](https://github.com/Ki-Seki/solutions)，在 `solutions/solutions-PAT/B1003.cpp` 中查看题解。
