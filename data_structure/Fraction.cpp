@@ -49,26 +49,26 @@ Fraction reduction(Fraction n)
     }
 }
 
-    // arithmetic
-    Fraction operator + (const Fraction& a, const Fraction& b)
+// arithmetic
+Fraction operator + (const Fraction& a, const Fraction& b)
     {
         Fraction ans;
         ans.numerator = a.numerator * b.denominator + b.numerator * a.denominator;
         ans.denominator = a.denominator * b.denominator;
         return reduction(ans);
     }
-    Fraction operator - (const Fraction& a, const Fraction& b)
+Fraction operator - (const Fraction& a, const Fraction& b)
     {
         Fraction ans;
         ans.numerator = a.numerator * b.denominator - b.numerator * a.denominator;
         ans.denominator = a.denominator * b.denominator;
         return reduction(ans);
     }
-    Fraction operator * (const Fraction& a, const Fraction& b)
+Fraction operator * (const Fraction& a, const Fraction& b)
     {
         return reduction(Fraction(a.numerator * b.numerator, a.denominator * b.denominator));
     }
-    Fraction operator / (const Fraction& a, const Fraction& b)
+Fraction operator / (const Fraction& a, const Fraction& b)
     {
         if (b.numerator == 0)  // 当除数为 0
             return Fraction(LLONG_MAX, 1);
