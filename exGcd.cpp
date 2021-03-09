@@ -1,13 +1,7 @@
 // 扩展欧几里得算法 Extended Euclidean algorithm
+// 求解方程 ax + by = gcd(a, b)
 #include <iostream>
 using namespace std;
-
-int gcd(int a, int b)
-{
-    return b == 0 ? a : gcd(b, a % b);
-}
-
-// 求解方程 ax + by = gcd(a, b)
 
 // 得到其中一组解
 int exGcd(int a, int b, int& x, int& y)

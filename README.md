@@ -93,6 +93,8 @@
 
 ### 1.9.1. 问题 1：ax + by = gcd(a, b) 的整数解？
 
+[源码](./exGcd.cpp)
+
 1. 求解其中一组解：联立 $a \% b = a - (a / b) * b$ 与 $ax_0 + by_0 = bx_1 + (a\%b)y_2$
 2. 求解全部解：联立 $ax + by = gcd(a, b)$ 与 $a(x + s_1) + b(y - s_2) = gcd(a, b)$
 3. 求解最小正整数 x' 的解：$x' = (x \% \frac{b}{gcd} + \frac{b}{gcd}) \% \frac{b}{gcd}$
@@ -113,9 +115,9 @@ $ax ≡ c(mod \ m)$ 等价于 $(ax - c) \% m = 0$ 等价于求解 $ax + my = c$ 
 
 ### 1.9.4. 问题 4：ax ≡ 1 中 a 逆元的求解？
 
-**模运算下的乘法逆元**：若 $m > 1, ab ≡ 1(mod \ m)$，则 a 与 b 互为模运算下的乘法逆元。
+> **模运算下的乘法逆元**：若 $m > 1, ab ≡ 1(mod \ m)$，则 a 与 b 互为模运算下的乘法逆元。
 
-这个问题主要是找到最小的正整数 x。
+ps. 找逆元主要是找到最小的正整数 x。
 
 若 $gcd(a, m) = 1$，则 $ax ≡ 1(mod \ m)$ 在 (0, m) 上有唯一解；
 
@@ -123,9 +125,27 @@ $ax ≡ c(mod \ m)$ 等价于 $(ax - c) \% m = 0$ 等价于求解 $ax + my = c$ 
 
 ### 1.9.5. 问题 5：(b / a) % m 的值计算？
 
-对于 b 特别大的情况，利用逆元求解，做如下转化
+方法一：利用逆元
 
-$(b / a) \% m \leftrightarrow (b * a') \% m \leftrightarrow (b \% m) * (a \% m) \% m$
+$\quad (b / a) \% m$
+
+$\leftrightarrow (b * a') \% m$
+
+$\leftrightarrow (b \% m) * (a \% m) \% m$
+
+方法二：利用费马小定理
+
+> **费马小定理**：若 m 为素数且 a % m ≠ 0，则 $a^{m - 1} ≡ 1(mod \ m)$
+
+易知，$a * a ^ {m - 2} ≡ 1(mod \ m)$，所以 $a ^ {m - 2}$ 即为逆元。通过快速幂即可求出。
+
+方法三：硬求解
+
+$\quad (b / a) \% m = x$
+
+$\leftrightarrow b / a = km + x$
+
+$\leftrightarrow b \% (am) / a = x$
 
 # 2. 数据结构
 
