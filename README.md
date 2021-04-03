@@ -75,6 +75,7 @@
   * C 函数：`Rounded_up(double x) = int(x) + 1 - int(1.0*int(x+1)-x)`
 * 向上取整的整除
   * C 函数：`Rounded_up(int a, int b) = (a - 1) / b + 1;`
+  * 或 `Rounded_up(int a, int b) = (a + b - 1) / b`，其中 `b - 1` 是偏置量（biasing），这种方法常见于对负数算术右移的舍入中
 * 四舍五入
   * C 函数：`Round(double x) = int(x + 0.5)`
 * 上下取整的关系
