@@ -10,6 +10,8 @@
   - [1.3. 查找 Search](#13-查找-search)
     - [1.3.1. 二分查找 Binary Search](#131-二分查找-binary-search)
     - [1.3.2. 散列 Hash](#132-散列-hash)
+    - [1.3.3. 深度优先搜索 Depth First Search](#133-深度优先搜索-depth-first-search)
+    - [1.3.4. 广度优先搜索 Breath First Search](#134-广度优先搜索-breath-first-search)
   - [1.4. 快速幂 Fast Power](#14-快速幂-fast-power)
   - [1.5. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple](#15-最大公约数和最小公倍数-greatest-common-divisor--least-common-multiple)
   - [1.6. 素数 Prime Number](#16-素数-prime-number)
@@ -28,6 +30,9 @@
 - [2. 数据结构](#2-数据结构)
   - [2.1. 高精度整数 Big Integer](#21-高精度整数-big-integer)
   - [2.2. 分数 Fraction](#22-分数-fraction)
+  - [2.3. 链表 Linked List](#23-链表-linked-list)
+    - [2.3.1. 动态链表 Dynamic Linked List](#231-动态链表-dynamic-linked-list)
+    - [2.3.2. 静态链表 Static Linked List](#232-静态链表-static-linked-list)
 
 # 1. 算法
 
@@ -55,7 +60,54 @@
 
 * 线性探查法（Linear Probing）：若冲突，则 `hash(key) = (key + 1) % table_size`；
 * 平方探查法（Quadratic Probing）：若冲突，则 `hash(key) = (key ± n²) % table_size`；
-* 链表法：`hash(key)` 值相同的保存在相同的链上
+* 链表法：`hash(key)` 值相同的保存在相同的链表节点上
+
+### 1.3.3. 深度优先搜索 Depth First Search
+
+```cpp
+// 使用递归实现 DFS 的模板
+dfs(some_values_indicating_status)
+{
+  // 递归边界
+  if (boundary_case)
+    some_statements;
+  
+  // 分岔口
+  // 第一种分岔口：取或不取，eg. 元素是否入栈
+  // 第二种分岔口：循环，eg. 迷宫的四个方向
+}
+```
+
+> DFS 例题
+> 
+> PAT A1103 “	Integer Factorization”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1103.cpp` 中查看题解。
+
+### 1.3.4. 广度优先搜索 Breath First Search
+
+```cpp
+// 使用队列 + 循环实现的 BFS 模板
+
+// 记录元素是否已入过队
+// 不能改成 is_visited，因为存在未被访问但已在队列中的元素，有可能导致重复入队
+// 也可以对原始数据使用染色法，而不单独设置标记数组，如 in_queue 或 is_visited
+bool in_queue[] = {};
+
+void bfs(int s)
+{
+  queue<int> q;
+  q.push(s);
+  while (!q.empty())
+  {
+    Node front = q.front();
+    q.pop();
+    for (each in next_layer_of_front)
+    {
+      q.push(each);
+      in_queue[each] = true;
+    }
+  }
+}
+```
 
 ## 1.4. [快速幂 Fast Power](./fastPower.cpp)
 
@@ -221,3 +273,109 @@ $\leftrightarrow b \% (am) / a = x$
 ## 2.2. 分数 Fraction
 
 [源码](./data_structure/Fraction.cpp)
+
+## 2.3. 链表 Linked List
+
+部分线性表之间的关系
+
+* 线性表
+  * 顺序表 - 数组
+  * 链表
+    * 动态链表
+    * 静态链表
+
+### 2.3.1. 动态链表 Dynamic Linked List
+
+链表内存空间在使用过程中动态生成与消灭
+
+**步骤一：定义节点**
+
+```cpp
+struct Node {
+  typename data;
+  Node* next;
+};
+```
+
+**步骤二：内存空间管理**
+
+```cpp
+// 使用 malloc 函数的方法
+#include<cstdlib>
+
+// 内存分配函数，若申请失败，返回空指针，NULL
+Node* p = (Node*) malloc(sizeof(Node));
+
+// 内存释放函数，释放 p 所指空间，并使其指向 NULL
+free(p)
+```
+
+```cpp
+// 使用 new 运算符的方法
+
+// 内存分配运算符，若申请失败，报错
+Node* p = new Node;
+
+// 内存释放运算符，释放 p 所指空间
+delete(p)
+```
+
+### 2.3.2. 静态链表 Static Linked List
+
+因为问题规模确定且较小，实现分配好空间的链表
+
+**Step 1: Define**
+
+```cpp
+struct Node {
+  int addr,  // 节点地址
+      data,  // 节点数据
+      next;  // 节点所指
+  typename xyz;  // 根据具体问题所设定的变量
+} list[MAXN];
+```
+
+**Step 2: Initialize**
+
+```cpp
+for (int i = 0; i < MAXN; i++)
+  list[i].xyz = a_specific_value;
+```
+
+**Step 3: Purge**
+
+```cpp
+// 从链表头一直遍历完毕，剔除无效数据
+int p = begin, cnt = 0;
+while (p != -1)
+{
+  list[p].xyz = another_specific_value;
+  cnt++;
+  p = list[p].next;
+}
+```
+
+**Step 4: Sort**
+
+```cpp
+// 根据具体问题编写 cmp 函数
+int cmp(Node a, Node b)
+{
+  return cmp;
+}
+
+// 将 list 排序
+sort(list, list + cnt, cmp);
+```
+
+**Step 5: Output**
+
+```cpp
+// 根据具体问题，按要求输出
+```
+
+> 静态链表例题
+> 
+> PAT B1025 “反转链表”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/B1025.cpp` 中查看题解。
+> 
+> PAT A1097 “Deduplication on a Linked List”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1097.cpp` 中查看题解。
