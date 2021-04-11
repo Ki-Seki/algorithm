@@ -80,25 +80,42 @@ dfs(some_values_indicating_status)
 
 > DFS 例题
 > 
-> PAT A1103 “	Integer Factorization”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1103.cpp` 中查看题解。
+> PAT A1103 “Integer Factorization”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1103.cpp` 中查看题解。
 
 ### 1.3.4. 广度优先搜索 Breath First Search
+
+关键点：
+
+* Node 结构体
+* 标识数组，如 in_queue，is_visisted，map 变量，set 变量
+* bfs
+  * 参数：首元素
+  * 首元素入队，首元素进行一般性操作
+  * 循环：通过首元素找下一层元素
 
 ```cpp
 // 使用队列 + 循环实现的 BFS 模板
 
+// Node 结构体应该保存一个唯一能标识一个状态的一些变量的组合
+// 正确定义 Node 是使用 BFS 的前提
+// 访问唯一状态应当用索引，而不是用 Node 本身
+struct Node {
+  some_attributions;
+} all_elements[];
+
 // 记录元素是否已入过队
 // 不能改成 is_visited，因为存在未被访问但已在队列中的元素，有可能导致重复入队
 // 也可以对原始数据使用染色法，而不单独设置标记数组，如 in_queue 或 is_visited
+// 也可以使用 map STL 来标识
 bool in_queue[] = {};
 
-void bfs(int s)
+void bfs(int s)  // 用 s 作索引，而非 Node 本身
 {
   queue<int> q;
   q.push(s);
   while (!q.empty())
   {
-    Node front = q.front();
+    Node front = all_elements[q.front()];
     q.pop();
     for (each in next_layer_of_front)
     {
@@ -108,6 +125,12 @@ void bfs(int s)
   }
 }
 ```
+
+> BFS 例题
+> 
+> PAT A1091 “Acute Stroke”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1091.cpp` 中查看题解。
+> 
+> CODEUP 100000609-03 “【宽搜入门】魔板”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-CODEUP/100000609-03.cpp` 中查看题解。
 
 ## 1.4. [快速幂 Fast Power](./fastPower.cpp)
 
