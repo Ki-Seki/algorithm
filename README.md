@@ -27,12 +27,16 @@
     - [1.10.1. 问题 1：n! 中质因子的数量](#1101-问题-1n-中质因子的数量)
     - [1.10.2. 问题 2：$C^m_n$ 的计算](#1102-问题-2cm_n-的计算)
     - [1.10.3. 问题 3：$C^m_n \% p$ 的计算](#1103-问题-3cm_n--p-的计算)
+  - [1.11. 基姆拉尔森公式 Kim Larson Formula](#111-基姆拉尔森公式-kim-larson-formula)
 - [2. 数据结构](#2-数据结构)
   - [2.1. 高精度整数 Big Integer](#21-高精度整数-big-integer)
   - [2.2. 分数 Fraction](#22-分数-fraction)
   - [2.3. 链表 Linked List](#23-链表-linked-list)
     - [2.3.1. 动态链表 Dynamic Linked List](#231-动态链表-dynamic-linked-list)
     - [2.3.2. 静态链表 Static Linked List](#232-静态链表-static-linked-list)
+  - [2.4. 树 Tree](#24-树-tree)
+    - [2.4.1. 二叉树](#241-二叉树)
+    - [2.4.2. 树](#242-树)
 
 # 1. 算法
 
@@ -136,7 +140,9 @@ void bfs(int s)  // 用 s 作索引，而非 Node 本身
 
 ## 1.5. [最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple](./gcd_lcm.cpp)
 
-## 1.6. [素数 Prime Number](./prime.cpp)
+## 1.6. 素数 Prime Number
+
+[源码](./prime.cpp)
 
 * sqrt 优化：素数判断
 * 埃氏（Eratosthenes）筛法：求素数表
@@ -287,6 +293,21 @@ $\leftrightarrow b \% (am) / a = x$
 > 
 > 则 $C^m_n \% p \equiv C_{n_k}^{m_k}  C_{n_{k-1}}^{m_{k-1}} ... C_{n_0}^{m_0} \% p$
 
+## 1.11. 基姆拉尔森公式 Kim Larson Formula
+
+```cpp
+// 返回值从 0，1 ~ 7，分别代表周日，周一到周六
+int kim_larson(int y, int m, int d)
+{
+    if (m < 3)
+    {
+        m += 12;
+        y--;
+    }
+    return (1 + d + 2*m + 3*(m+1)/5 + y + y/4 - y/100 + y/400) % 7;
+}
+```
+
 # 2. 数据结构
 
 ## 2.1. 高精度整数 Big Integer
@@ -345,7 +366,9 @@ delete(p)
 
 ### 2.3.2. 静态链表 Static Linked List
 
-因为问题规模确定且较小，实现分配好空间的链表
+因为问题规模确定且较小，实现分配好空间的链表。这类题目有较为一般的解题步骤：
+
+*Define -> Initialize -> Purge -> Sort -> Output*
 
 **Step 1: Define**
 
@@ -402,3 +425,35 @@ sort(list, list + cnt, cmp);
 > PAT B1025 “反转链表”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/B1025.cpp` 中查看题解。
 > 
 > PAT A1097 “Deduplication on a Linked List”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1097.cpp` 中查看题解。
+
+## 2.4. 树 Tree
+
+**树形态上的分类**
+
+* 树 Tree
+  * 二叉树 Binary Tree
+    * 完全二叉树 Complete Binary Tree
+      * 满二叉树
+    * Full Binary Tree
+
+> ps. 满二叉树和 Full Binary Tree 含义并不相同，中外间有歧义。中文语境下使用满二叉树概念即可。
+
+**树实现上的分类**
+
+* 动态的树：节点指针域使用地址索引，随时创建节点
+  * 含数据域的节点
+  * 另外包含层次号 `layer` 或 `level` 的节点
+* 静态的树：节点指针域使用下标索引，创建固定大小的树
+  * 普通的静态树
+  * 二维化的树：对于完全二叉树来说，若从 1 开始层次化顺次索引，则任一节点 n 的左子节点为 2n，右子节点为 2n+1
+
+
+### 2.4.1. 二叉树
+
+[源码](./data_structure/BinaryTree.cpp)
+
+### 2.4.2. 树
+
+[源码](./data_structure/Tree.cpp)
+
+树这一类的题往往联系四种遍历和 DFS 与 BFS。只要掌握好这些遍历和搜索即可轻松应对。
