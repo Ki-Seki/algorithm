@@ -35,7 +35,10 @@
     - [2.3.1. 动态链表 Dynamic Linked List](#231-动态链表-dynamic-linked-list)
     - [2.3.2. 静态链表 Static Linked List](#232-静态链表-static-linked-list)
   - [2.4. 树 Tree](#24-树-tree)
-    - [2.4.1. 二叉树](#241-二叉树)
+    - [2.4.1. 二叉树 Binary Tree](#241-二叉树-binary-tree)
+      - [2.4.1.1. 一般的二叉树 General Binary Tree](#2411-一般的二叉树-general-binary-tree)
+      - [2.4.1.2. 二叉查找树 Binary Search Tree](#2412-二叉查找树-binary-search-tree)
+      - [2.4.1.3. AVL 树](#2413-avl-树)
     - [2.4.2. 树](#242-树)
 
 # 1. 算法
@@ -448,9 +451,46 @@ sort(list, list + cnt, cmp);
   * 二维化的树：对于完全二叉树来说，若从 1 开始层次化顺次索引，则任一节点 n 的左子节点为 2n，右子节点为 2n+1
 
 
-### 2.4.1. 二叉树
+### 2.4.1. 二叉树 Binary Tree
+
+#### 2.4.1.1. 一般的二叉树 General Binary Tree
 
 [源码](./data_structure/BinaryTree.cpp)
+
+二叉树是指节点度不超过 2 的树。有以下关键点必须掌握：
+
+* 定义节点：`struct Node` 节点 = 数据 + 左孩子 + 右孩子 (+ 层次号)
+* 新建节点：`Node* new_node(int val)` 记得初始化指针域
+* 插入新节点：`void insert(Node* &root, int data)` 碰到创建新节点的地方，都要用引用
+* 四种遍历：如 `void preorder(Node* root)`
+* 复原二叉树：如 `Node* create_by_pre_in` 中序遍历和其他三种遍历结合都可以复原一棵二叉树
+
+> ps. 预设二叉树一般不含重复值的节点
+
+#### 2.4.1.2. 二叉查找树 Binary Search Tree
+
+二叉查找树是有序的二叉树。在一般二叉树的基础上，还要掌握：
+
+* 插入新节点：加入分支判断使二叉树满足有序的性质
+* 删除元素：`void delete_node(Node* &root, int x)` 重点是保证删除后仍满足有序的性质。最简单的实现包括三层任务
+  1. 递归地找到节点 x
+  2. 找前、后驱（如果都没有，直接删除即可），要用到两个辅助函数，如
+      * `Node* find_min(Node* root)`：寻找以 root 为根节点的树中最小权值节点
+  3. 复制前驱值到当前节点，递归删除前驱节点
+
+#### 2.4.1.3. AVL 树
+
+AVL 树是加速 BST 查找速度。在 BST 的基础上，掌握插入新节点的方法：
+
+* 定义节点：加入 height 参数，以便计算平衡因子
+* 两个获取参数的函数：
+  * `int get_height(Node* root)`
+  * `int get_balance_factor(Node* root)`
+* 一个更新函数，应对插入后高度的变化：`void update_height(Node* root)`
+* 两个旋转树的函数，以降低 root 的平衡因子：
+  * `void left_rotation(Node* &root)`
+  * `void right_rotation(Node* &root)`
+* insert 函数：通过平衡因子，判断 LL、LR、RR、RL 四种插入情形进行旋转
 
 ### 2.4.2. 树
 
