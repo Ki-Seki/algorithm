@@ -36,10 +36,12 @@
     - [2.3.2. 静态链表 Static Linked List](#232-静态链表-static-linked-list)
   - [2.4. 树 Tree](#24-树-tree)
     - [2.4.1. 二叉树 Binary Tree](#241-二叉树-binary-tree)
-      - [2.4.1.1. 一般的二叉树 General Binary Tree](#2411-一般的二叉树-general-binary-tree)
+      - [2.4.1.1. 一般二叉树 General Binary Tree](#2411-一般二叉树-general-binary-tree)
       - [2.4.1.2. 二叉查找树 Binary Search Tree](#2412-二叉查找树-binary-search-tree)
-      - [2.4.1.3. AVL 树](#2413-avl-树)
+      - [2.4.1.3. 平衡二叉树 AVL Tree](#2413-平衡二叉树-avl-tree)
     - [2.4.2. 树](#242-树)
+      - [一般的树 General Tree](#一般的树-general-tree)
+      - [并查集 Union-find Set](#并查集-union-find-set)
 
 # 1. 算法
 
@@ -453,7 +455,7 @@ sort(list, list + cnt, cmp);
 
 ### 2.4.1. 二叉树 Binary Tree
 
-#### 2.4.1.1. 一般的二叉树 General Binary Tree
+#### 2.4.1.1. 一般二叉树 General Binary Tree
 
 [源码](./data_structure/BinaryTree.cpp)
 
@@ -469,6 +471,8 @@ sort(list, list + cnt, cmp);
 
 #### 2.4.1.2. 二叉查找树 Binary Search Tree
 
+[源码](./data_structure/BinarySearchTree.cpp)
+
 二叉查找树是有序的二叉树。在一般二叉树的基础上，还要掌握：
 
 * 插入新节点：加入分支判断使二叉树满足有序的性质
@@ -478,9 +482,11 @@ sort(list, list + cnt, cmp);
       * `Node* find_min(Node* root)`：寻找以 root 为根节点的树中最小权值节点
   3. 复制前驱值到当前节点，递归删除前驱节点
 
-#### 2.4.1.3. AVL 树
+#### 2.4.1.3. 平衡二叉树 AVL Tree
 
-AVL 树是加速 BST 查找速度。在 BST 的基础上，掌握插入新节点的方法：
+[源码](./data_structure/AVLTree.cpp)
+
+AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点的方法：
 
 * 定义节点：加入 height 参数，以便计算平衡因子
 * 两个获取参数的函数：
@@ -494,6 +500,18 @@ AVL 树是加速 BST 查找速度。在 BST 的基础上，掌握插入新节点
 
 ### 2.4.2. 树
 
+#### 一般的树 General Tree
+
 [源码](./data_structure/Tree.cpp)
 
 树这一类的题往往联系四种遍历和 DFS 与 BFS。只要掌握好这些遍历和搜索即可轻松应对。
+
+#### 并查集 Union-find Set
+
+[源码](./data_structure/UnionFindSet.cpp)
+
+并查集实质上是由数组实现的一种树。其数据结构 `set[x] = y` 表示节点 `x` 的父节点为 `y`，当且仅当 `x == y` 时，`x` 或 `y` 是根节点。应掌握：
+
+* `int find(int x)`：包括迭代和递归两种实现
+* `void union(int a, int b)`：合并 `a` 和 `b` 所在的两个集合
+* 路径优化：将所有节点都指向根节点，将查找速度优化到 O(1)。包括迭代和递归两种实现
