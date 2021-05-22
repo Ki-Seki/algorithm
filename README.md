@@ -300,6 +300,8 @@ $\leftrightarrow b \% (am) / a = x$
 
 ## 1.11. 基姆拉尔森公式 Kim Larson Formula
 
+是日期到星期的转换公式
+
 ```cpp
 // 返回值从 0，1 ~ 7，分别代表周日，周一到周六
 int kim_larson(int y, int m, int d)
