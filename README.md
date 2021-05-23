@@ -39,9 +39,10 @@
       - [2.4.1.1. 一般二叉树 General Binary Tree](#2411-一般二叉树-general-binary-tree)
       - [2.4.1.2. 二叉查找树 Binary Search Tree](#2412-二叉查找树-binary-search-tree)
       - [2.4.1.3. 平衡二叉树 AVL Tree](#2413-平衡二叉树-avl-tree)
-    - [2.4.2. 树](#242-树)
-      - [一般的树 General Tree](#一般的树-general-tree)
-      - [并查集 Union-find Set](#并查集-union-find-set)
+      - [2.4.1.4. 堆 Heap](#2414-堆-heap)
+    - [2.4.2. 普通的树 Normal Tree](#242-普通的树-normal-tree)
+      - [2.4.2.1. 一般的树 General Tree](#2421-一般的树-general-tree)
+      - [2.4.2.2. 并查集 Union-find Set](#2422-并查集-union-find-set)
 
 # 1. 算法
 
@@ -500,15 +501,19 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
   * `void right_rotation(Node* &root)`
 * insert 函数：通过平衡因子，判断 LL、LR、RR、RL 四种插入情形进行旋转
 
-### 2.4.2. 树
+#### 2.4.1.4. 堆 Heap
 
-#### 一般的树 General Tree
+[源码](./data_structure/Heap.cpp)
+
+### 2.4.2. 普通的树 Normal Tree
+
+#### 2.4.2.1. 一般的树 General Tree
 
 [源码](./data_structure/Tree.cpp)
 
 树这一类的题往往联系四种遍历和 DFS 与 BFS。只要掌握好这些遍历和搜索即可轻松应对。
 
-#### 并查集 Union-find Set
+#### 2.4.2.2. 并查集 Union-find Set
 
 [源码](./data_structure/UnionFindSet.cpp)
 
