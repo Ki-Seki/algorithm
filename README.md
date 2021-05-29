@@ -10,8 +10,9 @@
   - [1.3. 查找 Search](#13-查找-search)
     - [1.3.1. 二分查找 Binary Search](#131-二分查找-binary-search)
     - [1.3.2. 散列 Hash](#132-散列-hash)
-    - [1.3.3. 深度优先搜索 Depth First Search](#133-深度优先搜索-depth-first-search)
-    - [1.3.4. 广度优先搜索 Breath First Search](#134-广度优先搜索-breath-first-search)
+    - [1.3.3. 随机选择算法 Randomized Selection](#133-随机选择算法-randomized-selection)
+    - [1.3.4. 深度优先搜索 Depth First Search](#134-深度优先搜索-depth-first-search)
+    - [1.3.5. 广度优先搜索 Breath First Search](#135-广度优先搜索-breath-first-search)
   - [1.4. 快速幂 Fast Power](#14-快速幂-fast-power)
   - [1.5. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple](#15-最大公约数和最小公倍数-greatest-common-divisor--least-common-multiple)
   - [1.6. 素数 Prime Number](#16-素数-prime-number)
@@ -35,30 +36,55 @@
     - [2.3.1. 动态链表 Dynamic Linked List](#231-动态链表-dynamic-linked-list)
     - [2.3.2. 静态链表 Static Linked List](#232-静态链表-static-linked-list)
   - [2.4. 树 Tree](#24-树-tree)
-    - [2.4.1. 二叉树 Binary Tree](#241-二叉树-binary-tree)
-      - [2.4.1.1. 一般二叉树 General Binary Tree](#2411-一般二叉树-general-binary-tree)
-      - [2.4.1.2. 二叉查找树 Binary Search Tree](#2412-二叉查找树-binary-search-tree)
-      - [2.4.1.3. 平衡二叉树 AVL Tree](#2413-平衡二叉树-avl-tree)
-      - [2.4.1.4. 堆 Heap](#2414-堆-heap)
-      - [2.4.1.5. 哈夫曼树 Huffman Tree](#2415-哈夫曼树-huffman-tree)
-    - [2.4.2. 普通的树 Normal Tree](#242-普通的树-normal-tree)
-      - [2.4.2.1. 一般的树 General Tree](#2421-一般的树-general-tree)
-      - [2.4.2.2. 并查集 Union-find Set](#2422-并查集-union-find-set)
-  - [图 Graph](#图-graph)
+    - [2.4.1. 分类 Classification](#241-分类-classification)
+    - [2.4.2. 二叉树 Binary Tree](#242-二叉树-binary-tree)
+      - [2.4.2.1. 一般二叉树 General Binary Tree](#2421-一般二叉树-general-binary-tree)
+      - [2.4.2.2. 二叉查找树 Binary Search Tree](#2422-二叉查找树-binary-search-tree)
+      - [2.4.2.3. 平衡二叉树 AVL Tree](#2423-平衡二叉树-avl-tree)
+      - [2.4.2.4. 堆 Heap](#2424-堆-heap)
+      - [2.4.2.5. 哈夫曼树 Huffman Tree](#2425-哈夫曼树-huffman-tree)
+    - [2.4.3. 普通的树 Normal Tree](#243-普通的树-normal-tree)
+      - [2.4.3.1. 一般的树 General Tree](#2431-一般的树-general-tree)
+      - [2.4.3.2. 并查集 Union-find Set](#2432-并查集-union-find-set)
+  - [2.5. 图 Graph](#25-图-graph)
+    - [2.5.1. 基础 Basis](#251-基础-basis)
+    - [2.5.2. 图的遍历 Graph Traversal](#252-图的遍历-graph-traversal)
 
 # 1. 算法
 
 ## 1.1. 排序 Sort
 
-[源码](./sort.cpp)
+* I 冒泡排序 Bubble Sort
+  * 源码：
+  * 思想：每趟中，依次比较两个相邻元素，传递式地在将一个最值传递到端
+  * 评价：$O(n^2)$
+* II 选择排序 Selection Sort
+  * [源码](./sort.cpp)
+  * 思想：每趟中，找到最值置于一端
+  * 评价：
+* III 插入排序 Insertion Sort
+  * [源码](./sort.cpp)
+  * 思想：原始序列一切为二，有序和无序。每一趟，从无序中取一个插入有序的。类比整理纸牌。
+  * 评价：
+* IV 归并排序 Merge Sort
+  * [源码](./sort.cpp)
+  * 思想：二分思想，每次归并两个不相交的部分。
+  * 实现：**merge 函数**，合并两个不相交的两部分，拉链式合并到新数组，最后用 memcpy；**merge_sort 函数**，利用辅助函数 merge 递归地或迭代地合并
+  * 评价：$O(nlogn)$
+* V 快速排序 Quick Sort
+  * [源码](./sort.cpp)
+  * 思想：two pointers，分而治之。按主元分割序列。
+  * 实现：**partition 函数**，以 two pointers 的方法将序列分割成两个部分，返回主元（prime）下标；**quick_sort 函数**，分而治之地使用 partition 函数
+  * 评价：$O(nlogn)$
+* VI 堆排序 Heap Sort
+  * [源码](./data_structure/Heap.cpp)
+  * 思想：利用堆优先队列的性质
+  * 实现：不断取堆顶置于末尾
+  * 评价：$O(nlogn)$
 
-包括以下排序算法的实现：
+## 1.2. 全排列 Full Permutation
 
-* 选择排序 Selection Sort
-* 插入排序 Insertion Sort
-* 归并排序 Merge Sort
-
-## 1.2. [全排列 Full Permutation](./full_permutation.cpp)
+[源码](./full_permutation.cpp)
 
 ## 1.3. 查找 Search
 
@@ -74,7 +100,11 @@
 * 平方探查法（Quadratic Probing）：若冲突，则 `hash(key) = (key ± n²) % table_size`；
 * 链表法：`hash(key)` 值相同的保存在相同的链表节点上
 
-### 1.3.3. 深度优先搜索 Depth First Search
+### 1.3.3. 随机选择算法 Randomized Selection
+
+待补充
+
+### 1.3.4. 深度优先搜索 Depth First Search
 
 ```cpp
 // 使用递归实现 DFS 的模板
@@ -94,7 +124,7 @@ dfs(some_values_indicating_status)
 > 
 > PAT A1103 “Integer Factorization”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1103.cpp` 中查看题解。
 
-### 1.3.4. 广度优先搜索 Breath First Search
+### 1.3.5. 广度优先搜索 Breath First Search
 
 关键点：
 
@@ -144,9 +174,13 @@ void bfs(int s)  // 用 s 作索引，而非 Node 本身
 > 
 > CODEUP 100000609-03 “【宽搜入门】魔板”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-CODEUP/100000609-03.cpp` 中查看题解。
 
-## 1.4. [快速幂 Fast Power](./fastPower.cpp)
+## 1.4. 快速幂 Fast Power
 
-## 1.5. [最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple](./gcd_lcm.cpp)
+[源码](./fastPower.cpp)
+
+## 1.5. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple
+
+[源码](./gcd_lcm.cpp)
 
 ## 1.6. 素数 Prime Number
 
@@ -438,6 +472,8 @@ sort(list, list + cnt, cmp);
 
 ## 2.4. 树 Tree
 
+### 2.4.1. 分类 Classification
+
 **树形态上的分类**
 
 * 树 Tree
@@ -458,9 +494,9 @@ sort(list, list + cnt, cmp);
   * 二维化的树：对于完全二叉树来说，若从 1 开始层次化顺次索引，则任一节点 n 的左子节点为 2n，右子节点为 2n+1
 
 
-### 2.4.1. 二叉树 Binary Tree
+### 2.4.2. 二叉树 Binary Tree
 
-#### 2.4.1.1. 一般二叉树 General Binary Tree
+#### 2.4.2.1. 一般二叉树 General Binary Tree
 
 [源码](./data_structure/BinaryTree.cpp)
 
@@ -474,7 +510,7 @@ sort(list, list + cnt, cmp);
 
 > ps. 预设二叉树一般不含重复值的节点
 
-#### 2.4.1.2. 二叉查找树 Binary Search Tree
+#### 2.4.2.2. 二叉查找树 Binary Search Tree
 
 [源码](./data_structure/BinarySearchTree.cpp)
 
@@ -487,7 +523,7 @@ sort(list, list + cnt, cmp);
       * `Node* find_min(Node* root)`：寻找以 root 为根节点的树中最小权值节点
   3. 复制前驱值到当前节点，递归删除前驱节点
 
-#### 2.4.1.3. 平衡二叉树 AVL Tree
+#### 2.4.2.3. 平衡二叉树 AVL Tree
 
 [源码](./data_structure/AVLTree.cpp)
 
@@ -503,7 +539,7 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
   * `void right_rotation(Node* &root)`
 * insert 函数：通过平衡因子，判断 LL、LR、RR、RL 四种插入情形进行旋转
 
-#### 2.4.1.4. 堆 Heap
+#### 2.4.2.4. 堆 Heap
 
 [源码](./data_structure/Heap.cpp)
 
@@ -526,7 +562,7 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
 * $CBT 节点数 = 叶子节点数 + 非叶子节点数 = \lceil \frac{n}{2} \rceil + \lfloor \frac{n}{2} \rfloor$
 * 二维化的 CBT 恰是层序遍历的结果
 
-#### 2.4.1.5. 哈夫曼树 Huffman Tree
+#### 2.4.2.5. 哈夫曼树 Huffman Tree
 
 [源码](./data_structure/HuffmanTree.cpp)
 
@@ -551,22 +587,35 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
   * 具体实现：用 STL 构建小数优先的优先队列，按照 BFS 的思想逐渐合并即可
 * 方法二：使用 priority_queue + binary_tree_node
   * 特点：既能实现哈夫曼树的所有功能，编码又相对简单
-  * 适用问题：前缀编码
-  * 具体实现：
+  * 适用问题：前缀编码，合并果子
+  * 具体实现：见下
 * 方法三：使用 heap + binary_tree_node
   * 特点：可以从 0 完整的实现哈夫曼树，但编码困难
-  * 适用问题：前缀编码
-  * 具体实现：用 STL 构建小数优先的优先队列，
+  * 适用问题：前缀编码，合并果子
+  * 具体实现：以指向二叉树节点的指针为权值建立小顶堆，构建哈夫曼树即可
 
-### 2.4.2. 普通的树 Normal Tree
+方法二的具体实现，包括四方面的需要掌握：
 
-#### 2.4.2.1. 一般的树 General Tree
+* 二叉树：
+  * 节点定义 `struct Node`
+  * 新建节点 `Node* new_node(int val)`
+* priority_queue
+  * 比较函数 `struct cmp`：记住和 sort 的 cmp 反着来即可
+  * 定义队列 `priority_queue<Node*, vector<Node*>, cmp> q;`
+* 哈夫曼树
+  * 合并函数 `Node* merge(Node* a, Node* b)`：合并两个节点
+  * 编码生成 `void gen_code(Node* root, string init)`：生成哈夫曼编码
+* 主函数：依照 BFS 的思想，一直合并最小的两个节点即可
+
+### 2.4.3. 普通的树 Normal Tree
+
+#### 2.4.3.1. 一般的树 General Tree
 
 [源码](./data_structure/Tree.cpp)
 
 树这一类的题往往联系四种遍历和 DFS 与 BFS。只要掌握好这些遍历和搜索即可轻松应对。
 
-#### 2.4.2.2. 并查集 Union-find Set
+#### 2.4.3.2. 并查集 Union-find Set
 
 [源码](./data_structure/UnionFindSet.cpp)
 
@@ -576,4 +625,92 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
 * `void union(int a, int b)`：合并 `a` 和 `b` 所在的两个集合
 * 路径优化：将所有节点都指向根节点，将查找速度优化到 O(1)。包括迭代和递归两种实现
 
-## 图 Graph
+## 2.5. 图 Graph
+
+### 2.5.1. 基础 Basis
+
+**术语 Terminology**
+
+* 同构 Isomorphism：顶点，边以及顶点和边的组合完全一致，但表现可能不同的图
+* 连通的 Connected：无向图中，两个顶点间有路径相连
+* 连通图 Connected Graph：任意两个顶点都连通的图
+* 连通分量 Connected Component：图中的最大连通图
+* 强 Strongly：用来修饰连通，是指在有向图中，两个顶点间互有路径才算联通
+* 连通块：连通分量和强连通分量的统称
+
+**分类 Classification**
+
+* 按形态上划分
+  * 有向图 Directed Graph
+  * 无向图 Undirected Graph
+* 按实现上划分
+  * 邻接矩阵 Adjacency Matrix：顶点数小于等于 1000 适用
+  * 邻接表 Adjacency List：顶点数大于 1000 适用
+
+> ps. 不管是邻接矩阵还是邻接表，都应该显式地既保存 a 到 b 方向的，又保存 b 到 a 方向的。就是说，从实现角度看，所有的图都是有向图，要把无向图看作是双向连通的有向图。
+
+### 2.5.2. 图的遍历 Graph Traversal
+
+对图的遍历，要考虑最一般的连通性。熟练掌握以下两个模板：
+
+**深度优先搜索遍历**
+
+```cpp
+dfs(n)
+{
+  is_visited[n] = true;
+  for (neighbor in neighbors_of_n)
+  {
+    if (edge[n][neighbor] exists)
+    {
+      blah_blah_blah
+
+      if (!is_visited[neighbor])
+      {
+        blah_blah_blah
+      }
+    }
+  }
+}
+
+graph_traversal()
+{
+  for (vertex in vertexes)
+  {
+    if (!is_visited[vertex])
+    {
+      blah_blah_blah
+
+      dfs(vertex);
+    }
+  }
+}
+```
+
+**广度优先搜索遍历**
+
+```cpp
+bfs(vertex)
+{
+  queue q;
+  q.push(vertex);
+  in_queue[vertex] = true;
+  while (q_is_not_empty)
+  {
+    front = q.top; q.pop;
+    for (neighbor in neighbors_of_front)
+      if (!in_queue[neighbor])
+      {
+        q.push(neighbor);
+        in_queue[neighbor] = true;
+      }
+  }
+}
+
+graph_traversal()
+{
+  for (vertex in vertexes)
+    if (!in_queue[vertex])
+      bfs(vertex);
+}
+```
