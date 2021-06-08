@@ -126,7 +126,11 @@ dfs(some_values_indicating_status)
 
 > DFS 例题
 > 
-> PAT A1103 “Integer Factorization”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1103.cpp` 中查看题解。
+> 1. **DFS 经典例题**：PAT A1103 “Integer Factorization”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1103.cpp` 中查看题解。
+> 
+> 2. **对存在依赖性变量时的做法**：PAT A1018 “Public Bike Management”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1018.cpp` 中查看题解。
+> 
+> 3. **存在依赖性变量时更灵活的处理**：PAT A1087 “All Roads Lead to Rome”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1087.cpp` 中查看题解。
 
 ### 1.3.5. 广度优先搜索 Breath First Search
 
