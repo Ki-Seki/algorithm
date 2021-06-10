@@ -1,8 +1,13 @@
 /*
+ * hint:
  * 三种快速幂计算 a ^ b % c，假设数据范围如下：
  *      a < 10 ^ 9
  * 0 <= b < 10 ^ 9
  *  1 < c < 10 ^ 9
+ * 
+ * 注意保存中间值的变量一定要定义为 long long 类型的；
+ * 如 fpr 中的 tmp，fpi 中的 ans 和 fpib 中的 ans。
+ * 如果定义为 int，可能导致意外的变量截断
 */
 
 #include <iostream>
@@ -93,6 +98,7 @@ void test()
 
 int main()
 {
-    test();
+    printf("%d %d %d", fastPowerIteration(2, 499, 100000), fastPowerRecursion(2, 499, 100000), fastPowerIterationBits(2, 499, 100000));
+    // test();
     return 0;
 }
