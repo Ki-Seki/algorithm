@@ -51,6 +51,9 @@
     - [2.5.2. 图的遍历 Graph Traversal](#252-图的遍历-graph-traversal)
     - [2.5.3. 最短路径 Shortest Path](#253-最短路径-shortest-path)
       - [2.5.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm](#2531-迪杰斯特拉算法-dijkstras-algorithm)
+      - [2.5.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm](#2532-贝尔曼-福特算法-bellman-ford-algorithm)
+      - [2.5.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)](#2533-最短路径快速算法-shortest-path-faster-algorithm-spfa)
+      - [2.5.3.4. 弗洛伊德算法 Floyd's Algorithm](#2534-弗洛伊德算法-floyds-algorithm)
 
 # 1. 算法
 
@@ -727,9 +730,9 @@ graph_traversal()
 
 #### 2.5.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm
 
-迪杰斯特拉算法能够解决边权非负的单源最短路径问题。
+**解决问题**：边权非负的单源最短路径问题, i.e. Single Source Shortest Path Problem(SSSP)
 
-他的核心代码是求最短距离，伪代码如下：
+**伪代码**：
 
 ```cpp
 // 变量定义
@@ -759,6 +762,8 @@ dijkstra(int start)
 }
 ```
 
+**扩展问题**：
+
 在核心代码求最短距离的基础上，就是说不改变问题的首要目的——求 start 到任意节点的具有最小边权和的路径，可以在步骤二处增加数组以解决这些问题：
 
 * 最短路径：增加数组 pre[]
@@ -768,9 +773,153 @@ dijkstra(int start)
 
 简单地在步骤二处增加数组会增加编码难度，可以采用分而治之的思想。首先利用迪杰斯特拉算法求得一个vector<int> pre[] 型数组（与上面的不同），其中 pre[i] 表示 i 顶点的最短路径上的前件节点集合。这样 pre[] 实际上就是一个树，接着利用树的 DFS 便可非常容易求解。
 
-其他注意事项：
+**其他注意事项**：
 
 * 最短路径问题是贪心算法，存在局部最优即全局最优的情况
 * 迪杰斯特拉算法的两个核心步骤都要求去找未被访问的节点
 * 算法正确性证明：归纳法 + 反证法
-* 算法复杂度在 $O(V^2 + E)$，如果内层找未访问的最小顶点利用优先队列实现，可降低复杂度到 $O(VlogV + E)$
+* 算法复杂度在 $O(V^2 + E)$，如果内层找未访问的最小顶点利用优先队列实现，可降低复杂度到 $O(VlogV + E)$，这称为堆优化的迪杰斯特拉算法
+
+#### 2.5.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm
+
+**解决问题**：有负权边的单源最短路径问题, i.e. Single Source Shortest Path Problem with Negative Weight Edge
+
+**代码模板**：
+
+```cpp
+struct Node {
+  int v, dist;  // v 为邻接表中的目标顶点，dist 为边权
+}
+vector<Node> adj[MAZV];  // 如果改用邻接矩阵，复杂度会达到 O(V^3)
+int n;  // 顶点数
+int dist[MAXV];  // 起点到各点的最短距离
+
+// 返回 false 若存在负环
+bool bellman_ford(int start)
+{
+  // step 1: initialize
+  fill(dist, dist + MAXV, INF);
+  dist[start] = 0;
+  // step 2: (n-1) times relaxation
+  for (int i = 0; i < n - 1; i++)
+    for (int u = 0; u < n; u++)
+      for (int j = 0; j < adj[u].size(); j++)
+      {
+        int v = adj[u][j].v,
+            dist = adj[u][j].dist;
+        if (dist[u] + dist < dist[v])
+          dist[v] = dist[u] + dist;  // 松弛操作
+      }
+  // step 3: detect negative cycle
+  for (int u = 0; u < n; u++)
+      for (int j = 0; j < adj[u].size(); j++)
+      {
+        int v = adj[u][j].v,
+            dist = adj[u][j].dist;
+        if (dist[u] + dist < dist[v])  // 若仍可以松弛则说明还存在负环
+          return false;
+      }
+  return true;
+}
+```
+
+**一些注解**：
+
+* 负环：顶点首尾相连形成环，环上边权和为负数
+* 存在负环 -> 存在顶点没有最短路径；存在最短路径 -> 无负环
+* 算法正确性证明：存在最短路径 -> 路径上的顶点数小于总顶点数 -> 最短路径树的高度小于总定点数
+* 优化方法：若某轮操作都不进行松弛，则可以提前返回
+* 算法复杂度为 O(VE)
+
+**关于统计最短路径条数**：
+
+由于有 n - 1 此操作，所以不能按照 Dijkstra's Algorithm 的做法每次 + 1，而应定义 set<int> pre[MAXV]，则 $num[v] = \sum\limits_{i ∈ pre[v]}num[i]$
+
+
+#### 2.5.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)
+
+**算法本质**：并不能单独称之为一种算法，仅仅是 Bellman-Ford Algorithm 的一种队列优化形式。其优化思路是：因为只有当某个顶点 u 的 d[u] 值发生改变时，从 u 出发的边邻接的 v 的 d[v] 值才可能发生改变，因此可以建立队列保存应当判断是否需要松弛的节点
+
+**代码模板**
+
+```cpp
+// variables
+vector<Node> adj[MAXV];
+bool in_queue[MAXV];  // 当前是否在队列中
+int n, dist[MAXV];
+int in_queue_times[MAXV];  // ANCHOR
+
+bool spfa(int start)
+{
+  // initialize
+  fill(dist, dist + MAXV, INF);
+  memset(in_queue_times, 0, sizeof(in_queue_times));  // ANCHOR
+  memset(in_queue, false, sizeof(in_queue));
+  dist[s] = 0;
+
+  // bfs
+  queue<int> q;
+  q.push(s);
+  in_queue[s] = true;
+  in_queue_times[s] = 1;  // ANCHOR
+  while (q.size())
+  {
+    // step 1: pop front, u
+    int u = q.front();
+    q.pop();
+    in_queue[u] = false;
+
+    // step 2: traverse all edges of u
+    for (int j = 0; j < adj[u].size(); j++)
+    {
+      int v = adj[u][j].v, d = adj[u][j].dist;
+      if (dist[u] + d < dist[v])
+      {
+        dist[v] = dist[u] + d;
+        if (in_queue[v] == false)  // IN-QUEUE PROCEDURE
+        {
+          q.push(v);
+          in_queue[v] = true;
+          in_queue_times[v]++;  // ANCHOR
+          if (in_queue_times[v] >= n) return false;  // ANCHOR
+        }
+      }
+    }
+  }
+  return true;
+}
+```
+
+**代码模板中要注意的**：
+
+* 代码中含 `ANCHOR` 的行可以删除，如果实现确定图中不存在负环
+* `IN-QUEUE PROCEDURE` 要重点注意，如果还有具体问题要求的不仅仅是距离最短，还存在其他标尺，那么如果这个标尺是对其他节点有影响的，条件子句中还要进行 `IN-QUEUE PROCEDURE`
+
+**一些注解**：
+
+* SPFA 时间复杂度平均 O(kE), k 大多不超过 2；但若存在负环，则会退化到 O(VE)
+* Bellman-Ford 算法因为遍历了所有的边，所以可以判断源点可达、不可达的负环；但 SPFA 则只能判断源点可达的负环。为判断源点不可达负环：可以添加辅助顶点 C，添加源点到 C 的边、C 到其他 V-1 个顶点的边
+
+**最短路径 经典例题**：
+
+PAT A1003 “Emergency”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1003.cpp` 中查看题解。
+
+#### 2.5.3.4. 弗洛伊德算法 Floyd's Algorithm
+
+**解决问题**：不含负环的全源最短路问题，i.e. All Pairs Shortest Paths (APSP) without Negative Cycle
+
+**问题约束**：MAXV 不超过 200，因此可以使用邻接矩阵
+
+**伪代码**：
+
+```cpp
+void floyd()
+{
+  for (int k = 0; k < n; k++)  // k is intermediate point
+    for (int i = 0; i < n; i++)
+      for (int j = 0; j < n; j++)
+        dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])  // relexation
+}
+```
+
+**算法正确性证明**：暂未掌握
