@@ -54,6 +54,7 @@
       - [2.5.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm](#2532-贝尔曼-福特算法-bellman-ford-algorithm)
       - [2.5.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)](#2533-最短路径快速算法-shortest-path-faster-algorithm-spfa)
       - [2.5.3.4. 弗洛伊德算法 Floyd's Algorithm](#2534-弗洛伊德算法-floyds-algorithm)
+    - [2.5.4. 最小生成树](#254-最小生成树)
 
 # 1. 算法
 
@@ -790,7 +791,7 @@ dijkstra(int start)
 struct Node {
   int v, dist;  // v 为邻接表中的目标顶点，dist 为边权
 }
-vector<Node> adj[MAZV];  // 如果改用邻接矩阵，复杂度会达到 O(V^3)
+vector<Node> adj[MAXV];  // 如果改用邻接矩阵，复杂度会达到 O(V^3)
 int n;  // 顶点数
 int dist[MAXV];  // 起点到各点的最短距离
 
@@ -922,4 +923,6 @@ void floyd()
 }
 ```
 
-**算法正确性证明**：暂未掌握
+**算法正确性证明**：暂不谈证明。思考中介点枚举为什么不能放在最内层循环?
+
+### 2.5.4. 最小生成树
