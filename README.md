@@ -2,6 +2,8 @@
 
 此 README.md 文件保存了大多数算法和数据结构的文件索引或文字说明。如果标题可以点击，即可跳转至相关文件。
 
+本文出现的所有例题均来自我的另外一个仓库，如果不知道如何使用，请点击 [solutions](https://github.com/Ki-Seki/solutions) 查看详情。
+
 文件中使用了 LaTex 公式，GitHub 上显示失效，请选择其它文本编辑器查看，比如 VScode。
 
 - [1. 排序 Sort](#1-排序-sort)
