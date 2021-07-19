@@ -57,6 +57,10 @@
     - [11.4.1. 基础 Basis](#1141-基础-basis)
     - [11.4.2. 普里姆算法 Prim's Algorithm](#1142-普里姆算法-prims-algorithm)
     - [11.4.3. 克鲁斯卡尔算法 Kruskal's Algorithm](#1143-克鲁斯卡尔算法-kruskals-algorithm)
+  - [11.5. 拓扑排序 Topological Sort](#115-拓扑排序-topological-sort)
+  - [11.6. 关键路径 Critical Path](#116-关键路径-critical-path)
+    - [11.6.1. 基础 Basis](#1161-基础-basis)
+  - [求法 Solution](#求法-solution)
 
 # 1. 排序 Sort
 
@@ -505,7 +509,6 @@ sort(list, list + cnt, cmp);
   * 普通的静态树
   * 二维化的树：对于完全二叉树来说，若从 1 开始层次化顺次索引，则任一节点 n 的左子节点为 2n，右子节点为 2n+1
 
-
 ## 10.2. 二叉树 Binary Tree
 
 ## 10.3. 一般二叉树 General Binary Tree
@@ -731,7 +734,7 @@ graph_traversal()
 
 ### 11.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm
 
-**解决问题**：边权非负的单源最短路径问题, i.e. Single Source Shortest Path Problem(SSSP)
+**解决问题**：边权非负的单源最短路径问题, i.e. Single Source Shortest Path(SSSP) Problem
 
 **伪代码**：
 
@@ -1033,3 +1036,192 @@ int kruskal()
     else return ans;
 }
 ```
+
+## 11.5. 拓扑排序 Topological Sort
+
+**基础 Basis**
+
+* 有向无环图 Directed Acyclic Graph(DAG)：字面意思
+* 拓扑排序 Topological Sort：对于 DAG G(E, V)，对任意 u,v ∈ E，若存在边 u → v，则将 u 排在 v 的前面。按这种逻辑进行的排序称拓扑排序
+
+**原理 Principal**
+
+将拓扑排序类比为大学课程的修读顺序安排。则如果某门课程无先导课程或其先导课程已全部修完，则这门课程就可以修读。
+
+**模板 Template**
+
+```c++
+int n;  // cnt of vertex
+vector<int> adj[MAXV];  // adjacency list
+int in_degree[MAXV];  // in-degree of vertex
+int ans[MAXN];  // sorted vertexes
+
+bool topological_sort()
+{
+	// step 0: initialize
+	int num = 0;  //  cnt of used vertexes
+	queue<int> q;
+
+	// step 1: push vertexes whose in-degrees are 0
+	for (int i = 0; i < n; i++)
+		if (in_degree[i] == 0)
+			q.push(i);
+
+	// step 2: bfs
+	while (q.size())
+	{
+		int u = q.front();
+		q.pop();
+    ans[num++] = u;
+
+		// traverse all neighbors of u, decrease their in-degree by 1
+		for (int i = 0; i < adj[u].size(); i++)
+		{
+			int v = adj[u][i];
+			in_degree[v]--;
+			if (in_degree[v] == 0)
+				q.push(v);
+		}
+
+		adj[u].clear();  // delete all out-edges of u. (ANCHOR)
+	}
+	if (num == n) return true;
+	else return false;  // cycle exists
+}
+```
+
+**注意 Tips**
+
+* 代码 ANCHOR 行有时非常重要，尤其是在连续输入多组数据时，需要复原变量，这个时候 ANCHOR 行可以直接复原。但是如果存在 num < n 时的情况，则 ANCHOR 行不能完全清空 adj 变量，*最好的方法是单独定义清空函数*
+* 根据原理，可以实现出不同版本的拓扑排序，包括 bfs，dfs，栈，贪心法（暴力法）等形式。各有优劣及适用情景
+
+## 11.6. 关键路径 Critical Path
+
+### 11.6.1. 基础 Basis
+
+* 顶点活动（Activity On Vertex，AOV）网：用顶点表示活动，用边表示活动间优先度的图。
+* 边活动（Activity On Edge，AOE）网：用带权边表示活动及其用时，用顶点表示事件的图。任何 AOV 网都可转换为 AOE 网。
+* 活动 Activity：指任务、课程、工程等
+* 事件 Event（常用 V 表示）：指任务、课程、工程等的完成与否、完成量等的状态。在 AOE 网中，一个节点即状态，表示其所有前序活动均完成。
+* 关键路径 Critical Path：在 AOE 网中寻找到的一条或多条最长路径
+* 关键路径树：所有关键路径组成的一颗树，如果只有一条关键路径，则退化为一维序列
+* 最长路径问题 Longest Path Problem：求关键路径的问题
+* 活动最早开始时间 $e_i$
+* 活动最晚开始时间 $l_i$
+* 事件最早开始时间 $ve_i$
+* 事件最晚开始时间 $vl_i$
+* 关键活动 Critical Activity：关键路径上的活动，即不允许拖延的活动。对任意关键活动总有 $e_i = l_i$
+* 源点 Source Vertex：AOE 网中的起点，i.e., a vertex with indegree zero
+* 汇点 Sink Vertex：AOE 网中的终点，i.e., a vertex with outdegree zero
+
+## 求法 Solution
+
+**解决问题**：求解 DAG 的最长路径
+
+**原理 Principal**：
+
+$V_u\stackrel{a_r}{\longrightarrow}V_v$
+
+1. 因为 `e == l`，所以要求 `e` 和 `l`
+2. 因为 `e = ve[i]` 及 `l = vl[j] - a.time` ，所以要求 `ve[]` 及 `vl[]`
+3. 因为 `ve[v] = max(ve[u] + time[r])` 及 `vl[u] = min(vl[v] - time[r])`，所以要求正反拓扑序列来求
+
+**步骤 Step**：
+
+1. 使用 `topological_sort()` 获得正拓扑序列 `topo_order[]`，计算 `ve[]`
+2. 如果未知汇点，找到汇点，获得关键路径长度，`critical_legth`
+3. 使用反拓扑序列，计算 `vl[]`
+4. 根据 `e`，`l`，`ve`，`vl` 间的关系，获得关键路径树 `cpt[]`
+5. 返回关键路径长度，如果不存在返回 `-1`
+
+**模板 Template**：
+
+```cpp
+struct Node {
+    int v, time;
+};
+
+int n;
+vector<Node> adj[MAXV];
+int in_degree[MAXV];
+stack<int> topo_order;
+int ve[MAXV], vl[MAXV];
+vector<int> cpt[MAXV];  // critical path tree
+
+// get topo_order[]
+// get ve[]
+// return false if cycle exists
+bool topological_sort()
+{
+    queue<int> q;
+    for (int i = 0; i < n; i++)
+        if (in_degree[i] == 0)
+            q.push(i);
+    while (q.size())
+    {
+        int u = q.front();
+        q.pop();
+        topo_order.push(u);
+        for (int i = 0; i < adj[u].size(); i++)
+        {
+            int v = adj[u][i].v, time = adj[u][i].time;
+            in_degree[v]--;
+            if (in_degree[v] == 0)
+                q.push(v);
+            // u -> v, use ve[u] to update ve[v]
+            if (ve[u] + time > ve[v])
+                ve[v] = ve[u] + time;
+        }
+    }
+    if (topo_order.size() == n) return true;
+    else return false;
+}
+
+// get critical path tree, cpt[]
+// return length of critical path
+int critical_path()
+{
+    // step 1: get ve[]
+    memset(ve, 0, sizeof(ve));
+    if (topological_sort() == false)
+        return -1;
+    
+    // step 2: get sink vertex, if it is unknown
+    int critical_length = 0;
+    for (int i = 0; i < n; i++)
+        if (ve[i] > critical_length)
+            critical_length = ve[i];
+    
+    // step 3: get vl[]
+    fill(vl, vl + n, critical_length);  // assigning MAX is also correct
+    while (topo_order.size())
+    {
+        int u = topo_order.top();
+        topo_order.pop();
+        for (int i = 0; i < adj[u].size(); i++)
+        {
+            int v = adj[u][i].v, time = adj[u][i].time;
+            // u -> v, use vl[v] to update vl[u]
+            if (vl[v] - time < vl[u])
+                vl[u] = vl[v] - time;
+        }
+    }
+
+    // step 4: get critical path tree
+    for (int u = 0; u < n; u++)
+        for (int i = 0; i < adj[u].size(); i++)
+        {
+            int v = adj[u][i].v, time = adj[u][i].time;
+            int e = ve[u], l = vl[v] - time;
+            if (e == l)
+                cpt[u].push_back(v);
+        }
+
+    // step 5: return length of critical path
+    return critical_length;
+}
+```
+
+> 例题
+> 
+> Codeup 100000624-00 题“关键路径”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-CODEUP/100000624-00.cpp` 中查看题解。
