@@ -62,7 +62,7 @@
   - [11.5. 拓扑排序 Topological Sort](#115-拓扑排序-topological-sort)
   - [11.6. 关键路径 Critical Path](#116-关键路径-critical-path)
     - [11.6.1. 基础 Basis](#1161-基础-basis)
-  - [求法 Solution](#求法-solution)
+    - [11.6.2. 求法 Solution](#1162-求法-solution)
 
 # 1. 排序 Sort
 
@@ -1116,7 +1116,7 @@ bool topological_sort()
 * 源点 Source Vertex：AOE 网中的起点，i.e., a vertex with indegree zero
 * 汇点 Sink Vertex：AOE 网中的终点，i.e., a vertex with outdegree zero
 
-## 求法 Solution
+### 11.6.2. 求法 Solution
 
 **解决问题**：求解 DAG 的最长路径
 
