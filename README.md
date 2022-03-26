@@ -29,6 +29,7 @@
     - [4.6.1. 问题 1：n! 中质因子的数量](#461-问题-1n-中质因子的数量)
     - [4.6.2. 问题 2：$C^m_n$ 的计算](#462-问题-2cm_n-的计算)
     - [4.6.3. 问题 3：$C^m_n \% p$ 的计算](#463-问题-3cm_n--p-的计算)
+  - [欧拉公式 Euler's Formula](#欧拉公式-eulers-formula)
 - [5. 有限状态机 Finite State Machine](#5-有限状态机-finite-state-machine)
 - [6. 基姆拉尔森公式 Kim Larson Formula](#6-基姆拉尔森公式-kim-larson-formula)
 - [7. 高精度整数 Big Integer](#7-高精度整数-big-integer)
@@ -73,11 +74,11 @@
 * II 选择排序 Selection Sort
   * [源码](./sort.cpp)
   * 思想：每趟中，找到最值置于一端
-  * 评价：
+  * 评价：$O(n^2)$
 * III 插入排序 Insertion Sort
   * [源码](./sort.cpp)
   * 思想：原始序列一切为二，有序和无序。每一趟，从无序中取一个插入有序的。类比整理纸牌。
-  * 评价：
+  * 评价：$O(n^2)$
 * IV 归并排序 Merge Sort
   * [源码](./sort.cpp)
   * 思想：二分思想，每次归并两个不相交的部分。
@@ -103,6 +104,12 @@
 ## 3.1. 二分查找 Binary Search
 
 [源码](./BinarySearch.cpp)
+
+* while 循环中是 left <= right or left < right
+* 接收参数 left，right 所代表的区间开闭
+* 判断时的 array[mid] > or < or >= or <= x
+* 不满足情况时的返回值
+* 返回值返回什么
 
 ## 3.2. 散列 Hash
 
@@ -339,6 +346,10 @@ $\leftrightarrow b \% (am) / a = x$
 > $n = n_kp^k+n_{k-1}p^{k-1}+...+n_0$
 > 
 > 则 $C^m_n \% p \equiv C_{n_k}^{m_k}  C_{n_{k-1}}^{m_{k-1}} ... C_{n_0}^{m_0} \% p$
+
+## 欧拉公式 Euler's Formula
+
+$V+E-F=2$
 
 # 5. 有限状态机 Finite State Machine
 
