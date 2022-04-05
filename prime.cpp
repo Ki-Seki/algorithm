@@ -8,6 +8,14 @@
 #include <iostream>
 #include <cmath>
 
+/* 平方技巧的证明：
+ * 任何一个数可以拆分成两因子相乘，如 a = n * m；
+ * 不失一般性，令 n <= m；
+ * 则 max(n) = √a
+ * 由于只需要判断所有的 n 是否既不是 1 和 a 且是 a 的因子；
+ * 所以循环中遍历到 √a 即可
+*/
+
 // 使用 sqrt 来优化的素数判断函数
 // 需要 <cmath>
 bool is_prime(int n)

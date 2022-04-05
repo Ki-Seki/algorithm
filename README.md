@@ -29,7 +29,7 @@
     - [4.6.1. 问题 1：n! 中质因子的数量](#461-问题-1n-中质因子的数量)
     - [4.6.2. 问题 2：$C^m_n$ 的计算](#462-问题-2cm_n-的计算)
     - [4.6.3. 问题 3：$C^m_n \% p$ 的计算](#463-问题-3cm_n--p-的计算)
-  - [欧拉公式 Euler's Formula](#欧拉公式-eulers-formula)
+  - [4.7. 欧拉公式 Euler's Formula](#47-欧拉公式-eulers-formula)
 - [5. 有限状态机 Finite State Machine](#5-有限状态机-finite-state-machine)
 - [6. 基姆拉尔森公式 Kim Larson Formula](#6-基姆拉尔森公式-kim-larson-formula)
 - [7. 高精度整数 Big Integer](#7-高精度整数-big-integer)
@@ -64,6 +64,7 @@
   - [11.6. 关键路径 Critical Path](#116-关键路径-critical-path)
     - [11.6.1. 基础 Basis](#1161-基础-basis)
     - [11.6.2. 求法 Solution](#1162-求法-solution)
+- [动态规划 Dynamic Programming](#动态规划-dynamic-programming)
 
 # 1. 排序 Sort
 
@@ -205,16 +206,20 @@ void bfs(int s)  // 用 s 作索引，而非 Node 本身
 
 [源码](./fastPower.cpp)
 
+快速幂的核心原理是 $a^{m+n} = a^m + a^n$
+
 ## 4.2. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple
 
 [源码](./gcd_lcm.cpp)
+
+更相减损法：直接假设 a > b，则 gcd(a, b) = gcd(b, a%b)
 
 ## 4.3. 素数 Prime Number
 
 [源码](./prime.cpp)
 
-* sqrt 优化：素数判断
-* 埃氏（Eratosthenes）筛法：求素数表
+* 平方技术：判断给定数字是否是素数
+* 埃氏（Eratosthenes）筛法：求某范围内的所有素数，原理在于素数不是任何非 1 与非本身数字的倍数，因此从 2 开始枚举所有的倍数，枚举 3 所有的倍数...
 
 ## 4.4. 取整与舍入 Round
 
@@ -347,7 +352,7 @@ $\leftrightarrow b \% (am) / a = x$
 > 
 > 则 $C^m_n \% p \equiv C_{n_k}^{m_k}  C_{n_{k-1}}^{m_{k-1}} ... C_{n_0}^{m_0} \% p$
 
-## 欧拉公式 Euler's Formula
+## 4.7. 欧拉公式 Euler's Formula
 
 $V+E-F=2$
 
@@ -1238,3 +1243,9 @@ int critical_path()
 > 例题
 > 
 > Codeup 100000624-00 题“关键路径”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-CODEUP/100000624-00.cpp` 中查看题解。
+
+# 动态规划 Dynamic Programming
+
+DP 算法最好选择从 1 开始计数，因为下标为 0 时往往是边界
+
+待做笔记
