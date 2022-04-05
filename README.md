@@ -7,64 +7,66 @@
 文件中使用了 LaTex 公式，GitHub 上显示失效，请选择其它文本编辑器查看，比如 VScode。
 
 - [1. 排序 Sort](#1-排序-sort)
-- [2. 全排列 Full Permutation](#2-全排列-full-permutation)
-- [3. 查找 Search](#3-查找-search)
-  - [3.1. 二分查找 Binary Search](#31-二分查找-binary-search)
-  - [3.2. 散列 Hash](#32-散列-hash)
-  - [3.3. 随机选择算法 Randomized Selection](#33-随机选择算法-randomized-selection)
-  - [3.4. 深度优先搜索 Depth First Search](#34-深度优先搜索-depth-first-search)
-  - [3.5. 广度优先搜索 Breath First Search](#35-广度优先搜索-breath-first-search)
-- [4. 数学相关 Mathematics Related](#4-数学相关-mathematics-related)
-  - [4.1. 快速幂 Fast Power](#41-快速幂-fast-power)
-  - [4.2. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple](#42-最大公约数和最小公倍数-greatest-common-divisor--least-common-multiple)
-  - [4.3. 素数 Prime Number](#43-素数-prime-number)
-  - [4.4. 取整与舍入 Round](#44-取整与舍入-round)
-  - [4.5. 扩展欧几里得算法 Extended Euclidean algorithm](#45-扩展欧几里得算法-extended-euclidean-algorithm)
-    - [4.5.1. 问题 1：ax + by = gcd(a, b) 的整数解？](#451-问题-1ax--by--gcda-b-的整数解)
-    - [4.5.2. 问题 2：ax + by = c 的整数解？](#452-问题-2ax--by--c-的整数解)
-    - [4.5.3. 问题 3：同余式 ax ≡ c(mod m) 的整数解？](#453-问题-3同余式-ax--cmod-m-的整数解)
-    - [4.5.4. 问题 4：ax ≡ 1 中 a 逆元的求解？](#454-问题-4ax--1-中-a-逆元的求解)
-    - [4.5.5. 问题 5：(b / a) % m 的值计算？](#455-问题-5b--a--m-的值计算)
-  - [4.6. 组合数学 Combinatorial Mathematics](#46-组合数学-combinatorial-mathematics)
-    - [4.6.1. 问题 1：n! 中质因子的数量](#461-问题-1n-中质因子的数量)
-    - [4.6.2. 问题 2：$C^m_n$ 的计算](#462-问题-2cm_n-的计算)
-    - [4.6.3. 问题 3：$C^m_n \% p$ 的计算](#463-问题-3cm_n--p-的计算)
-  - [4.7. 欧拉公式 Euler's Formula](#47-欧拉公式-eulers-formula)
+- [2. 查找 Search](#2-查找-search)
+  - [2.1. 二分查找 Binary Search](#21-二分查找-binary-search)
+  - [2.2. 散列 Hash](#22-散列-hash)
+  - [2.3. 深度优先搜索 Depth First Search](#23-深度优先搜索-depth-first-search)
+  - [2.4. 广度优先搜索 Breath First Search](#24-广度优先搜索-breath-first-search)
+- [3. 数学 Mathematics](#3-数学-mathematics)
+  - [3.1. 快速幂 Fast Power](#31-快速幂-fast-power)
+  - [3.2. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple](#32-最大公约数和最小公倍数-greatest-common-divisor--least-common-multiple)
+  - [3.3. 素数 Prime Number](#33-素数-prime-number)
+  - [3.4. 取整与舍入 Round](#34-取整与舍入-round)
+  - [3.5. 扩展欧几里得算法 Extended Euclidean algorithm](#35-扩展欧几里得算法-extended-euclidean-algorithm)
+    - [3.5.1. 问题 1：ax + by = gcd(a, b) 的整数解？](#351-问题-1ax--by--gcda-b-的整数解)
+    - [3.5.2. 问题 2：ax + by = c 的整数解？](#352-问题-2ax--by--c-的整数解)
+    - [3.5.3. 问题 3：同余式 ax ≡ c(mod m) 的整数解？](#353-问题-3同余式-ax--cmod-m-的整数解)
+    - [3.5.4. 问题 4：ax ≡ 1 中 a 逆元的求解？](#354-问题-4ax--1-中-a-逆元的求解)
+    - [3.5.5. 问题 5：(b / a) % m 的值计算？](#355-问题-5b--a--m-的值计算)
+  - [3.6. 全排列 Full Permutation](#36-全排列-full-permutation)
+  - [3.7. 组合数学 Combinatorial Mathematics](#37-组合数学-combinatorial-mathematics)
+    - [3.7.1. 问题 1：n! 中质因子的数量](#371-问题-1n-中质因子的数量)
+    - [3.7.2. 问题 2：$C^m_n$ 的计算](#372-问题-2cm_n-的计算)
+    - [3.7.3. 问题 3：$C^m_n \% p$ 的计算](#373-问题-3cm_n--p-的计算)
+  - [3.8. 欧拉公式 Euler's Formula](#38-欧拉公式-eulers-formula)
+  - [3.9. 基姆拉尔森公式 Kim Larson Formula](#39-基姆拉尔森公式-kim-larson-formula)
+- [4. 随机选择算法 Randomized Selection](#4-随机选择算法-randomized-selection)
 - [5. 有限状态机 Finite State Machine](#5-有限状态机-finite-state-machine)
-- [6. 基姆拉尔森公式 Kim Larson Formula](#6-基姆拉尔森公式-kim-larson-formula)
-- [7. 高精度整数 Big Integer](#7-高精度整数-big-integer)
-- [8. 分数 Fraction](#8-分数-fraction)
-- [9. 链表 Linked List](#9-链表-linked-list)
-  - [9.1. 动态链表 Dynamic Linked List](#91-动态链表-dynamic-linked-list)
-  - [9.2. 静态链表 Static Linked List](#92-静态链表-static-linked-list)
-- [10. 树 Tree](#10-树-tree)
-  - [10.1. 分类 Classification](#101-分类-classification)
-  - [10.2. 二叉树 Binary Tree](#102-二叉树-binary-tree)
-  - [10.3. 一般二叉树 General Binary Tree](#103-一般二叉树-general-binary-tree)
-  - [10.4. 二叉查找树 Binary Search Tree](#104-二叉查找树-binary-search-tree)
-  - [10.5. 平衡二叉树 AVL Tree](#105-平衡二叉树-avl-tree)
-  - [10.6. 堆 Heap](#106-堆-heap)
-  - [10.7. 哈夫曼树 Huffman Tree](#107-哈夫曼树-huffman-tree)
-  - [10.8. 普通的树 Normal Tree](#108-普通的树-normal-tree)
-  - [10.9. 一般的树 General Tree](#109-一般的树-general-tree)
-  - [10.10. 并查集 Union-Find Set](#1010-并查集-union-find-set)
-- [11. 图 Graph](#11-图-graph)
-  - [11.1. 基础 Basis](#111-基础-basis)
-  - [11.2. 图的遍历 Graph Traversal](#112-图的遍历-graph-traversal)
-  - [11.3. 最短路径 Shortest Path](#113-最短路径-shortest-path)
-    - [11.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm](#1131-迪杰斯特拉算法-dijkstras-algorithm)
-    - [11.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm](#1132-贝尔曼-福特算法-bellman-ford-algorithm)
-    - [11.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)](#1133-最短路径快速算法-shortest-path-faster-algorithm-spfa)
-    - [11.3.4. 弗洛伊德算法 Floyd's Algorithm](#1134-弗洛伊德算法-floyds-algorithm)
-  - [11.4. 最小生成树 Minimum Spanning Tree](#114-最小生成树-minimum-spanning-tree)
-    - [11.4.1. 基础 Basis](#1141-基础-basis)
-    - [11.4.2. 普里姆算法 Prim's Algorithm](#1142-普里姆算法-prims-algorithm)
-    - [11.4.3. 克鲁斯卡尔算法 Kruskal's Algorithm](#1143-克鲁斯卡尔算法-kruskals-algorithm)
-  - [11.5. 拓扑排序 Topological Sort](#115-拓扑排序-topological-sort)
-  - [11.6. 关键路径 Critical Path](#116-关键路径-critical-path)
-    - [11.6.1. 基础 Basis](#1161-基础-basis)
-    - [11.6.2. 求法 Solution](#1162-求法-solution)
-- [动态规划 Dynamic Programming](#动态规划-dynamic-programming)
+- [6. 高精度整数 Big Integer](#6-高精度整数-big-integer)
+- [7. 分数 Fraction](#7-分数-fraction)
+- [8. 链表 Linked List](#8-链表-linked-list)
+  - [8.1. 动态链表 Dynamic Linked List](#81-动态链表-dynamic-linked-list)
+  - [8.2. 静态链表 Static Linked List](#82-静态链表-static-linked-list)
+- [9. 树 Tree](#9-树-tree)
+  - [9.1. 分类 Classification](#91-分类-classification)
+  - [9.2. 二叉树 Binary Tree](#92-二叉树-binary-tree)
+    - [9.2.1. 一般二叉树 General Binary Tree](#921-一般二叉树-general-binary-tree)
+    - [9.2.2. 二叉查找树 Binary Search Tree](#922-二叉查找树-binary-search-tree)
+    - [9.2.3. 平衡二叉树 AVL Tree](#923-平衡二叉树-avl-tree)
+    - [9.2.4. 堆 Heap](#924-堆-heap)
+    - [9.2.5. 哈夫曼树 Huffman Tree](#925-哈夫曼树-huffman-tree)
+  - [9.3. 普通的树 Normal Tree](#93-普通的树-normal-tree)
+    - [9.3.1. 一般的树 General Tree](#931-一般的树-general-tree)
+    - [9.3.2. 并查集 Union-Find Set](#932-并查集-union-find-set)
+- [10. 图 Graph](#10-图-graph)
+  - [10.1. 基础 Basis](#101-基础-basis)
+  - [10.2. 图的遍历 Graph Traversal](#102-图的遍历-graph-traversal)
+  - [10.3. 最短路径 Shortest Path](#103-最短路径-shortest-path)
+    - [10.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm](#1031-迪杰斯特拉算法-dijkstras-algorithm)
+    - [10.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm](#1032-贝尔曼-福特算法-bellman-ford-algorithm)
+    - [10.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)](#1033-最短路径快速算法-shortest-path-faster-algorithm-spfa)
+    - [10.3.4. 弗洛伊德算法 Floyd's Algorithm](#1034-弗洛伊德算法-floyds-algorithm)
+  - [10.4. 最小生成树 Minimum Spanning Tree](#104-最小生成树-minimum-spanning-tree)
+    - [10.4.1. 基础 Basis](#1041-基础-basis)
+    - [10.4.2. 普里姆算法 Prim's Algorithm](#1042-普里姆算法-prims-algorithm)
+    - [10.4.3. 克鲁斯卡尔算法 Kruskal's Algorithm](#1043-克鲁斯卡尔算法-kruskals-algorithm)
+  - [10.5. 拓扑排序 Topological Sort](#105-拓扑排序-topological-sort)
+  - [10.6. 关键路径 Critical Path](#106-关键路径-critical-path)
+    - [10.6.1. 基础 Basis](#1061-基础-basis)
+    - [10.6.2. 求法 Solution](#1062-求法-solution)
+- [11. 动态规划 Dynamic Programming](#11-动态规划-dynamic-programming)
+  - [基础 Basis](#基础-basis)
+  - [注意](#注意)
 
 # 1. 排序 Sort
 
@@ -96,13 +98,9 @@
   * 实现：不断取堆顶置于末尾
   * 评价：$O(nlogn)$
 
-# 2. 全排列 Full Permutation
+# 2. 查找 Search
 
-[源码](./full_permutation.cpp)
-
-# 3. 查找 Search
-
-## 3.1. 二分查找 Binary Search
+## 2.1. 二分查找 Binary Search
 
 [源码](./BinarySearch.cpp)
 
@@ -112,7 +110,7 @@
 * 不满足情况时的返回值
 * 返回值返回什么
 
-## 3.2. 散列 Hash
+## 2.2. 散列 Hash
 
 散列本质上是查找算法。常用的哈希函数 `hash(key) = key % table_size`，其中 `table_size` 尽量为素数，减少冲突（collision）。其他处理冲突的方法：
 
@@ -120,11 +118,8 @@
 * 平方探查法（Quadratic Probing）：若冲突，则 `hash(key) = (key ± n²) % table_size`；
 * 链表法：`hash(key)` 值相同的保存在相同的链表节点上
 
-## 3.3. 随机选择算法 Randomized Selection
 
-待补充
-
-## 3.4. 深度优先搜索 Depth First Search
+## 2.3. 深度优先搜索 Depth First Search
 
 ```cpp
 // 使用递归实现 DFS 的模板
@@ -150,7 +145,7 @@ dfs(some_values_indicating_status)
 > 
 > 3. **存在依赖性变量时更灵活的处理**：PAT A1087 “All Roads Lead to Rome”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1087.cpp` 中查看题解。
 
-## 3.5. 广度优先搜索 Breath First Search
+## 2.4. 广度优先搜索 Breath First Search
 
 关键点：
 
@@ -200,28 +195,28 @@ void bfs(int s)  // 用 s 作索引，而非 Node 本身
 > 
 > CODEUP 100000609-03 “【宽搜入门】魔板”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-CODEUP/100000609-03.cpp` 中查看题解。
 
-# 4. 数学相关 Mathematics Related
+# 3. 数学 Mathematics
 
-## 4.1. 快速幂 Fast Power
+## 3.1. 快速幂 Fast Power
 
 [源码](./fastPower.cpp)
 
 快速幂的核心原理是 $a^{m+n} = a^m + a^n$
 
-## 4.2. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple
+## 3.2. 最大公约数和最小公倍数 Greatest Common Divisor & Least Common Multiple
 
 [源码](./gcd_lcm.cpp)
 
 更相减损法：直接假设 a > b，则 gcd(a, b) = gcd(b, a%b)
 
-## 4.3. 素数 Prime Number
+## 3.3. 素数 Prime Number
 
 [源码](./prime.cpp)
 
 * 平方技术：判断给定数字是否是素数
 * 埃氏（Eratosthenes）筛法：求某范围内的所有素数，原理在于素数不是任何非 1 与非本身数字的倍数，因此从 2 开始枚举所有的倍数，枚举 3 所有的倍数...
 
-## 4.4. 取整与舍入 Round
+## 3.4. 取整与舍入 Round
 
 * 向下取整
   * C 函数：`Rounded_down(double x) = int(x)`
@@ -236,11 +231,11 @@ void bfs(int s)  // 用 s 作索引，而非 Node 本身
 * 上下取整的关系
   * 数学公式：$\lceil x \rceil = \lfloor x \rfloor + \Delta,\quad \Delta = 1 - \lfloor 1.0 \cdot \lfloor x + 1 \rfloor - x \rfloor$
 
-## 4.5. 扩展欧几里得算法 Extended Euclidean algorithm
+## 3.5. 扩展欧几里得算法 Extended Euclidean algorithm
 
 扩展欧几里得算法以 gcd 算法为基础，解决以下几个问题
 
-### 4.5.1. 问题 1：ax + by = gcd(a, b) 的整数解？
+### 3.5.1. 问题 1：ax + by = gcd(a, b) 的整数解？
 
 [源码](./exGcd.cpp)
 
@@ -248,13 +243,13 @@ void bfs(int s)  // 用 s 作索引，而非 Node 本身
 2. 求解全部解：联立 $ax + by = gcd(a, b)$ 与 $a(x + s_1) + b(y - s_2) = gcd(a, b)$
 3. 求解最小正整数 x' 的解：$x' = (x \% \frac{b}{gcd} + \frac{b}{gcd}) \% \frac{b}{gcd}$
 
-### 4.5.2. 问题 2：ax + by = c 的整数解？
+### 3.5.2. 问题 2：ax + by = c 的整数解？
 
 若 $c \% gcd = 0$，则可以将问题转化 $ax + by = gcd \leftrightarrow a \frac{cx'}{gcd} + b \frac{cy'}{gcd} = c$
 
 若 $c \% gcd ≠ 0$，则无解
 
-### 4.5.3. 问题 3：同余式 ax ≡ c(mod m) 的整数解？
+### 3.5.3. 问题 3：同余式 ax ≡ c(mod m) 的整数解？
 
 $ax ≡ c(mod \ m)$ 等价于 $(ax - c) \% m = 0$ 等价于求解 $ax + my = c$ 中 x 的值
 
@@ -262,7 +257,7 @@ $ax ≡ c(mod \ m)$ 等价于 $(ax - c) \% m = 0$ 等价于求解 $ax + my = c$ 
 
 若 $c \% gcd(a, m) ≠ 0$，则无解
 
-### 4.5.4. 问题 4：ax ≡ 1 中 a 逆元的求解？
+### 3.5.4. 问题 4：ax ≡ 1 中 a 逆元的求解？
 
 > **模运算下的乘法逆元**：若 $m > 1, ab ≡ 1(mod \ m)$，则 a 与 b 互为模运算下的乘法逆元。
 
@@ -272,7 +267,7 @@ ps. 找逆元主要是找到最小的正整数 x。
 
 若 $gcd(a, m) ≠ 1$，则无解。
 
-### 4.5.5. 问题 5：(b / a) % m 的值计算？
+### 3.5.5. 问题 5：(b / a) % m 的值计算？
 
 方法一：利用逆元
 
@@ -296,23 +291,27 @@ $\leftrightarrow b / a = km + x$
 
 $\leftrightarrow b \% (am) / a = x$
 
-## 4.6. 组合数学 Combinatorial Mathematics
+## 3.6. 全排列 Full Permutation
+
+[源码](./full_permutation.cpp)
+
+## 3.7. 组合数学 Combinatorial Mathematics
 
 [源码](./combination.cpp)
 
 组合数的计算问题与快速幂，素数筛选，阶乘质因子分解，扩展欧几里得算法等相关。组合数算法是这些算法的综合应用。
 
-### 4.6.1. 问题 1：n! 中质因子的数量
+### 3.7.1. 问题 1：n! 中质因子的数量
 
 不断除以 p 来找到规律。可以使用递推或递归求解。
 
-### 4.6.2. 问题 2：$C^m_n$ 的计算
+### 3.7.2. 问题 2：$C^m_n$ 的计算
 
 > 方法一：递推公式 $C^m_n = C^{m-1}_{n-1} + C^m_{n-1}$
 
 > 方法二：公式变形，边乘边除
 
-### 4.6.3. 问题 3：$C^m_n \% p$ 的计算
+### 3.7.3. 问题 3：$C^m_n \% p$ 的计算
 
 > 方法一：递推公式
 > 
@@ -352,9 +351,31 @@ $\leftrightarrow b \% (am) / a = x$
 > 
 > 则 $C^m_n \% p \equiv C_{n_k}^{m_k}  C_{n_{k-1}}^{m_{k-1}} ... C_{n_0}^{m_0} \% p$
 
-## 4.7. 欧拉公式 Euler's Formula
+## 3.8. 欧拉公式 Euler's Formula
 
 $V+E-F=2$
+
+## 3.9. 基姆拉尔森公式 Kim Larson Formula
+
+是日期到星期的转换公式
+
+```cpp
+// 返回值从 0，1 ~ 6，分别代表周日，周一到周六
+int kim_larson(int y, int m, int d)
+{
+    if (m < 3)
+    {
+        m += 12;
+        y--;
+    }
+    return (1 + d + 2*m + 3*(m+1)/5 + y + y/4 - y/100 + y/400) % 7;
+}
+```
+
+# 4. 随机选择算法 Randomized Selection
+
+* 常见案例如：快速排序，找出第 n 大的值
+* 上述两个案例都不存在特定输入使其达到 O(n^2)；平均 O(n)
 
 # 5. 有限状态机 Finite State Machine
 
@@ -371,32 +392,18 @@ $V+E-F=2$
 > 
 > PAT A1060 “Are They Equal”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1060.cpp` 中查看题解。
 
-# 6. 基姆拉尔森公式 Kim Larson Formula
-
-是日期到星期的转换公式
-
-```cpp
-// 返回值从 0，1 ~ 7，分别代表周日，周一到周六
-int kim_larson(int y, int m, int d)
-{
-    if (m < 3)
-    {
-        m += 12;
-        y--;
-    }
-    return (1 + d + 2*m + 3*(m+1)/5 + y + y/4 - y/100 + y/400) % 7;
-}
-```
-
-# 7. 高精度整数 Big Integer
+# 6. 高精度整数 Big Integer
 
 [源码](./data_structure/BigInteger.cpp)
 
-# 8. 分数 Fraction
+* 只要掌握“高精度 × int”，该类型的题就迎刃而解了
+* “高精度 × int”：高精度拆分成 bit，bit 乘 int，结果 carry 累加
+
+# 7. 分数 Fraction
 
 [源码](./data_structure/Fraction.cpp)
 
-# 9. 链表 Linked List
+# 8. 链表 Linked List
 
 部分线性表之间的关系
 
@@ -406,7 +413,7 @@ int kim_larson(int y, int m, int d)
     * 动态链表
     * 静态链表
 
-## 9.1. 动态链表 Dynamic Linked List
+## 8.1. 动态链表 Dynamic Linked List
 
 链表内存空间在使用过程中动态生成与消灭
 
@@ -442,7 +449,7 @@ Node* p = new Node;
 delete(p)
 ```
 
-## 9.2. 静态链表 Static Linked List
+## 8.2. 静态链表 Static Linked List
 
 因为问题规模确定且较小，实现分配好空间的链表。这类题目有较为一般的解题步骤：
 
@@ -504,17 +511,17 @@ sort(list, list + cnt, cmp);
 > 
 > PAT A1097 “Deduplication on a Linked List”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1097.cpp` 中查看题解。
 
-# 10. 树 Tree
+# 9. 树 Tree
 
-## 10.1. 分类 Classification
+## 9.1. 分类 Classification
 
 **树形态上的分类**
 
 * 树 Tree
   * 二叉树 Binary Tree
-    * 完全二叉树 Complete Binary Tree
-      * 满二叉树
-    * Full Binary Tree
+    * 完全二叉树 Complete Binary Tree：只允许右下角为空的二叉树
+      * 满二叉树：每一层均满的二叉树，形状如三角形，是特殊的完全二叉树
+    * Full Binary Tree：结点或为叶子或度为 2 的树（想象最常见的哈夫曼树）
 
 > ps. 满二叉树和 Full Binary Tree 含义并不相同，中外间有歧义。中文语境下使用满二叉树概念即可。
 
@@ -527,9 +534,9 @@ sort(list, list + cnt, cmp);
   * 普通的静态树
   * 二维化的树：对于完全二叉树来说，若从 1 开始层次化顺次索引，则任一节点 n 的左子节点为 2n，右子节点为 2n+1
 
-## 10.2. 二叉树 Binary Tree
+## 9.2. 二叉树 Binary Tree
 
-## 10.3. 一般二叉树 General Binary Tree
+### 9.2.1. 一般二叉树 General Binary Tree
 
 [源码](./data_structure/BinaryTree.cpp)
 
@@ -543,7 +550,7 @@ sort(list, list + cnt, cmp);
 
 > ps. 预设二叉树一般不含重复值的节点
 
-## 10.4. 二叉查找树 Binary Search Tree
+### 9.2.2. 二叉查找树 Binary Search Tree
 
 [源码](./data_structure/BinarySearchTree.cpp)
 
@@ -556,7 +563,7 @@ sort(list, list + cnt, cmp);
       * `Node* find_min(Node* root)`：寻找以 root 为根节点的树中最小权值节点
   3. 复制前驱值到当前节点，递归删除前驱节点
 
-## 10.5. 平衡二叉树 AVL Tree
+### 9.2.3. 平衡二叉树 AVL Tree
 
 [源码](./data_structure/AVLTree.cpp)
 
@@ -572,7 +579,7 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
   * `void right_rotation(Node* &root)`
 * insert 函数：通过平衡因子，判断 LL、LR、RR、RL 四种插入情形进行旋转
 
-## 10.6. 堆 Heap
+### 9.2.4. 堆 Heap
 
 [源码](./data_structure/Heap.cpp)
 
@@ -595,7 +602,7 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
 * $CBT 节点数 = 叶子节点数 + 非叶子节点数 = \lceil \frac{n}{2} \rceil + \lfloor \frac{n}{2} \rfloor$
 * 二维化的 CBT 恰是层序遍历的结果
 
-## 10.7. 哈夫曼树 Huffman Tree
+### 9.2.5. 哈夫曼树 Huffman Tree
 
 [源码](./data_structure/HuffmanTree.cpp)
 
@@ -615,7 +622,7 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
 实现方面，如果从零开始实现，代码量较大，可以根据具体问题选择部分实现哈夫曼编码的功能。以下实现方法从简单到困难递增。
 
 * 方法一：使用 priority_queue
-  * 特点：并为实现树的结构，只是求出了根节点的权值
+  * 特点：并未实现树的结构，只是求出了根节点的权值
   * 适用问题：“合并果子”
   * 具体实现：用 STL 构建小数优先的优先队列，按照 BFS 的思想逐渐合并即可
 * 方法二：使用 priority_queue + binary_tree_node
@@ -640,15 +647,15 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
   * 编码生成 `void gen_code(Node* root, string init)`：生成哈夫曼编码
 * 主函数：依照 BFS 的思想，一直合并最小的两个节点即可
 
-## 10.8. 普通的树 Normal Tree
+## 9.3. 普通的树 Normal Tree
 
-## 10.9. 一般的树 General Tree
+### 9.3.1. 一般的树 General Tree
 
 [源码](./data_structure/Tree.cpp)
 
 树这一类的题往往联系四种遍历和 DFS 与 BFS。只要掌握好这些遍历和搜索即可轻松应对。
 
-## 10.10. 并查集 Union-Find Set
+### 9.3.2. 并查集 Union-Find Set
 
 [源码](./data_structure/UnionFindSet.cpp)
 
@@ -658,9 +665,9 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
 * `void union(int a, int b)`：合并 `a` 和 `b` 所在的两个集合
 * 路径优化：将所有节点都指向根节点，将查找速度优化到 O(1)。包括迭代和递归两种实现
 
-# 11. 图 Graph
+# 10. 图 Graph
 
-## 11.1. 基础 Basis
+## 10.1. 基础 Basis
 
 **术语 Terminology**
 
@@ -682,7 +689,7 @@ AVL 树加速 BST 查找速度。在 BST 的基础上，要掌握插入新节点
 
 > ps. 不管是邻接矩阵还是邻接表，都应该显式地既保存 a 到 b 方向的，又保存 b 到 a 方向的。就是说，从实现角度看，所有的图都是有向图，要把无向图看作是双向连通的有向图。
 
-## 11.2. 图的遍历 Graph Traversal
+## 10.2. 图的遍历 Graph Traversal
 
 对图的遍历，要考虑最一般的连通性。熟练掌握以下两个模板：
 
@@ -748,9 +755,9 @@ graph_traversal()
 }
 ```
 
-## 11.3. 最短路径 Shortest Path
+## 10.3. 最短路径 Shortest Path
 
-### 11.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm
+### 10.3.1. 迪杰斯特拉算法 Dijkstra's Algorithm
 
 **解决问题**：边权非负的单源最短路径问题, i.e. Single Source Shortest Path(SSSP) Problem
 
@@ -802,7 +809,7 @@ dijkstra(int start)
 * 算法正确性证明：归纳法 + 反证法
 * 算法复杂度在 $O(V^2 + E)$，如果内层找未访问的最小顶点利用优先队列实现，可降低复杂度到 $O(VlogV + E)$，这称为堆优化的迪杰斯特拉算法
 
-### 11.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm
+### 10.3.2. 贝尔曼-福特算法 Bellman-Ford Algorithm
 
 **解决问题**：有负权边的单源最短路径问题, i.e. Single Source Shortest Path Problem with Negative Weight Edge
 
@@ -858,7 +865,7 @@ bool bellman_ford(int start)
 由于有 n - 1 此操作，所以不能按照 Dijkstra's Algorithm 的做法每次 + 1，而应定义 set<int> pre[MAXV]，则 $num[v] = \sum\limits_{i ∈ pre[v]}num[i]$
 
 
-### 11.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)
+### 10.3.3. 最短路径快速算法 Shortest Path Faster Algorithm (SPFA)
 
 **算法本质**：并不能单独称之为一种算法，仅仅是 Bellman-Ford Algorithm 的一种队列优化形式。其优化思路是：因为只有当某个顶点 u 的 d[u] 值发生改变时，从 u 出发的边邻接的 v 的 d[v] 值才可能发生改变，因此可以建立队列保存应当判断是否需要松弛的节点
 
@@ -926,7 +933,7 @@ bool spfa(int start)
 
 PAT A1003 “Emergency”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-PAT/A1003.cpp` 中查看题解。
 
-### 11.3.4. 弗洛伊德算法 Floyd's Algorithm
+### 10.3.4. 弗洛伊德算法 Floyd's Algorithm
 
 **解决问题**：不含负环的全源最短路问题，i.e. All Pairs Shortest Paths (APSP) without Negative Cycle
 
@@ -946,9 +953,9 @@ void floyd()
 
 **算法正确性证明**：暂不谈证明。思考中介点枚举为什么不能放在最内层循环?
 
-## 11.4. 最小生成树 Minimum Spanning Tree
+## 10.4. 最小生成树 Minimum Spanning Tree
 
-### 11.4.1. 基础 Basis
+### 10.4.1. 基础 Basis
 
 **定义 Definition**
 
@@ -966,7 +973,7 @@ void floyd()
 2. 最小生成树不唯一，但最小边权和唯一
 3. 图中任何节点都可以作为最小生成树的根节点
 
-### 11.4.2. 普里姆算法 Prim's Algorithm
+### 10.4.2. 普里姆算法 Prim's Algorithm
 
 **原理 Theory**
 
@@ -1004,7 +1011,7 @@ prim(int start)
 }
 ```
 
-### 11.4.3. 克鲁斯卡尔算法 Kruskal's Algorithm
+### 10.4.3. 克鲁斯卡尔算法 Kruskal's Algorithm
 
 **原理 Theory**
 
@@ -1055,7 +1062,7 @@ int kruskal()
 }
 ```
 
-## 11.5. 拓扑排序 Topological Sort
+## 10.5. 拓扑排序 Topological Sort
 
 **基础 Basis**
 
@@ -1113,9 +1120,9 @@ bool topological_sort()
 * 代码 ANCHOR 行有时非常重要，尤其是在连续输入多组数据时，需要复原变量，这个时候 ANCHOR 行可以直接复原。但是如果存在 num < n 时的情况，则 ANCHOR 行不能完全清空 adj 变量，*最好的方法是单独定义清空函数*
 * 根据原理，可以实现出不同版本的拓扑排序，包括 bfs，dfs，栈，贪心法（暴力法）等形式。各有优劣及适用情景
 
-## 11.6. 关键路径 Critical Path
+## 10.6. 关键路径 Critical Path
 
-### 11.6.1. 基础 Basis
+### 10.6.1. 基础 Basis
 
 * 顶点活动（Activity On Vertex，AOV）网：用顶点表示活动，用边表示活动间优先度的图。
 * 边活动（Activity On Edge，AOE）网：用带权边表示活动及其用时，用顶点表示事件的图。任何 AOV 网都可转换为 AOE 网。
@@ -1132,7 +1139,7 @@ bool topological_sort()
 * 源点 Source Vertex：AOE 网中的起点，i.e., a vertex with indegree zero
 * 汇点 Sink Vertex：AOE 网中的终点，i.e., a vertex with outdegree zero
 
-### 11.6.2. 求法 Solution
+### 10.6.2. 求法 Solution
 
 **解决问题**：求解 DAG 的最长路径
 
@@ -1244,8 +1251,37 @@ int critical_path()
 > 
 > Codeup 100000624-00 题“关键路径”，[点此处](https://github.com/Ki-Seki/solutions)，并在以下目录 `solutions/solutions-CODEUP/100000624-00.cpp` 中查看题解。
 
-# 动态规划 Dynamic Programming
+# 11. 动态规划 Dynamic Programming
+
+## 基础 Basis
+
+**术语 Terminology**
+
+* 最优化问题 Optimization Problem：根据约束条件求得最优结果。
+* 多阶段决策问题 Multistage Decision-making Problem：最优化问题的一种，可以将问题划分成相关联的若干阶段。
+* 阶段 Stage：按照有限自动机的思想理解，阶段=结点+有向线段。
+* 状态 State：按照有限自动机的思想理解，状态即结点；也可以将状态理解成子问题的解。
+* 决策 Decision-making：按照有限自动机的思想理解，决策即有向线段。
+* 记忆化搜索 Memory Search：边搜索边保存状态。
+* 状态转移方程 State Transition Equation：描述状态和状态间转换的方程。设计该方程是动规的核心。
+* 重叠子问题 Overlapping Subproblem：问题可以分为若干子问题，且子问题重复出现
+* 最优子结构 Optimal Substructure：问题的最优解可以通过子问题的最优解有效构造出来。
+* 贪心选择性 Greedy Choice Property：一个问题的整体最优解可通过一系列局部的最优解的选择达到，并且每次的选择可以依赖以前作出的选择，但不依赖于后面要作出的选择。
+* 无后效性 Non-aftereffect Property：状态只影响下一个状态，而不影响之后的。状态转移方程应当满足该性质。
+
+**方法 Approach**
+
+* 自顶向下的方法 / 递归 Top-down Approach / Recursion
+* 自底向上的方法 / 递推 Bottom-up Approach / Iteration
+
+**比较 Comparison**
+
+|方法|理解|比较|
+|--|--|--|
+|分治 Divide-and-Conquer：|=非重叠子问题|可以解决非优化类问题，比如归并排序|
+|贪心 Greedy Algorithm：|=贪心选择性+最优子结构|每一步不必依靠上一步的解|
+|动态规划 Dynamic Programming：|=重叠子问题+最优子结构||
+
+## 注意
 
 DP 算法最好选择从 1 开始计数，因为下标为 0 时往往是边界
-
-待做笔记
