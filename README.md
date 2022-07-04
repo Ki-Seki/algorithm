@@ -67,6 +67,8 @@
 - [11. 动态规划 Dynamic Programming](#11-动态规划-dynamic-programming)
   - [基础 Basis](#基础-basis)
   - [注意](#注意)
+- [字符串 String](#字符串-string)
+  - [KMP 算法 Knuth–Morris–Pratt string-searching algorithm](#kmp-算法-knuthmorrispratt-string-searching-algorithm)
 
 # 1. 排序 Sort
 
@@ -1285,3 +1287,9 @@ int critical_path()
 ## 注意
 
 DP 算法最好选择从 1 开始计数，因为下标为 0 时往往是边界
+
+# 字符串 String
+
+## KMP 算法 Knuth–Morris–Pratt string-searching algorithm
+
+（待填充）
